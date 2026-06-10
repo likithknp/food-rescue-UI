@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
 function NGOs() {
+
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState("");
 
   const ngos = [
     {
@@ -15,27 +19,81 @@ function NGOs() {
     }
   ];
 
+  useEffect(() => {
+    getCurrentLocation();
+  }, []);
+
+  const getCurrentLocation = () => {
+
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by your browser");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
+
+        setLocation({
+          latitude,
+          longitude
+        });
+
+      },
+      (err) => {
+        console.error(err);
+        setError("Location permission denied");
+      }
+    );
+  };
+
   return (
     <>
       <Navbar />
 
       <div className="container mt-4">
 
-        <h2>NGOs</h2>
+        <h2 className="mb-4">Nearby NGOs</h2>
+
+        {location && (
+          <div className="alert alert-success">
+            <strong>Current Location</strong>
+            <br />
+            Latitude: {location.latitude}
+            <br />
+            Longitude: {location.longitude}
+          </div>
+        )}
+
+        {error && (
+          <div className="alert alert-danger">
+            {error}
+          </div>
+        )}
 
         <div className="row">
 
           {ngos.map((ngo) => (
 
-            <div className="col-md-4 mt-3" key={ngo.id}>
+            <div
+              className="col-md-4 mt-3"
+              key={ngo.id}
+            >
 
-              <div className="card shadow">
+              <div className="card shadow h-100">
 
                 <div className="card-body">
 
                   <h5>{ngo.name}</h5>
 
-                  <p>{ngo.city}</p>
+                  <p className="text-muted">
+                    {ngo.city}
+                  </p>
 
                 </div>
 

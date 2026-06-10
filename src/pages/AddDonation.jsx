@@ -1,171 +1,349 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { createDonation } from "../services/donationService";
 
 function AddDonation() {
+  const [images, setImages] = useState([]);
 
-    const [donation, setDonation] = useState({
-        foodName: "",
-        quantity: "",
-        description: "",
-        imageUrl: "",
-        expiryTime: "",
-        status: "AVAILABLE",
-        pickupLocation: ""
+  const [donation, setDonation] = useState({
+    foodName: "",
+    quantity: "",
+    expiryTime: "",
+    pickupLocation: "",
+    description: "",
+  });
+
+  const handleChange = (e) => {
+    setDonation({
+      ...donation,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    const handleChange = (e) => {
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages((prev) => [...prev, ...files]);
+  };
 
-        setDonation({
-            ...donation,
-            [e.target.name]: e.target.value
-        });
-    };
+ const useCurrentLocation = () => {
+  if (!navigator.geolocation) {
+    alert("Geolocation is not supported");
+    return;
+  }
 
-    const handleSubmit = async (e) => {
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
 
-        e.preventDefault();
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+        );
 
-        try {
+        const data = await response.json();
 
-            await createDonation(donation);
+        setDonation((prev) => ({
+          ...prev,
+          pickupLocation:
+            data.display_name ||
+            `${lat}, ${lng}`,
+        }));
+      } catch (error) {
+        console.error(error);
 
-            alert("Food Donation Added Successfully");
+        setDonation((prev) => ({
+          ...prev,
+          pickupLocation: `${lat}, ${lng}`,
+        }));
+      }
+    },
+    (error) => {
+      console.error(error);
+      alert("Unable to fetch location");
+    }
+  );
+};
 
-            setDonation({
-                foodName: "",
-                quantity: "",
-                description: "",
-                imageUrl: "",
-                expiryTime: "",
-                status: "AVAILABLE",
-                pickupLocation: ""
-            });
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        } catch (error) {
+    console.log("Donation:", donation);
+    console.log("Images:", images);
 
-            console.error(error);
+    alert("Donation submitted successfully");
+  };
 
-            alert("Failed To Save Donation");
-        }
-    };
+  return (
+    <>
+      <Navbar />
 
-    return (
-        <>
-            <Navbar />
+      <div
+        style={{
+          minHeight: "100vh",
+          backgroundColor: "#f0faf0",
+          padding: "30px 15px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            background: "#fff",
+            borderRadius: "24px",
+            padding: "30px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+          }}
+        >
+          <h2
+            style={{
+              fontWeight: "700",
+              marginBottom: "25px",
+              color: "#166534",
+            }}
+          >
+            Add Food Donation
+          </h2>
 
-            <div className="container mt-4">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="form-label fw-semibold">
+                Food Type
+              </label>
 
-                <div className="card shadow p-4">
-
-                    <h2 className="mb-4">
-                        Donate Food
-                    </h2>
-
-                    <form onSubmit={handleSubmit}>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Food Name
-                            </label>
-
-                            <input
-                                type="text"
-                                name="foodName"
-                                className="form-control"
-                                value={donation.foodName}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Quantity
-                            </label>
-
-                            <input
-                                type="text"
-                                name="quantity"
-                                className="form-control"
-                                value={donation.quantity}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Description
-                            </label>
-
-                            <textarea
-                                name="description"
-                                className="form-control"
-                                rows="3"
-                                value={donation.description}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Image URL
-                            </label>
-
-                            <input
-                                type="text"
-                                name="imageUrl"
-                                className="form-control"
-                                value={donation.imageUrl}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Expiry Time
-                            </label>
-
-                            <input
-                                type="datetime-local"
-                                name="expiryTime"
-                                className="form-control"
-                                value={donation.expiryTime}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">
-                                Pickup Location
-                            </label>
-
-                            <input
-                                type="text"
-                                name="pickupLocation"
-                                className="form-control"
-                                value={donation.pickupLocation}
-                                onChange={handleChange}
-                                placeholder="Enter pickup location"
-                                required
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="btn btn-success"
-                        >
-                            Submit Donation
-                        </button>
-
-                    </form>
-
-                </div>
-
+              <select
+                className="form-select"
+                name="foodName"
+                value={donation.foodName}
+                onChange={handleChange}
+                required
+                style={{
+                  padding: "14px",
+                  borderRadius: "12px",
+                }}
+              >
+                <option value="">Select food type</option>
+                <option value="Cooked Food">Cooked Food</option>
+                <option value="Packed Food">Packed Food</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Bakery Items">Bakery Items</option>
+                <option value="Beverages">Beverages</option>
+              </select>
             </div>
-        </>
-    );
+
+            <div className="mb-4">
+              <label className="form-label fw-semibold">
+                Quantity
+              </label>
+
+              <input
+                type="text"
+                name="quantity"
+                className="form-control"
+                placeholder="e.g., 10 servings, 5 kg"
+                value={donation.quantity}
+                onChange={handleChange}
+                required
+                style={{
+                  padding: "14px",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="form-label fw-semibold">
+                Expiry Date
+              </label>
+
+              <input
+                type="date"
+                name="expiryTime"
+                className="form-control"
+                value={donation.expiryTime}
+                onChange={handleChange}
+                required
+                style={{
+                  padding: "14px",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="form-label fw-semibold">
+                Pickup Location
+              </label>
+
+              <input
+                type="text"
+                name="pickupLocation"
+                className="form-control"
+                placeholder="Enter address or use current location"
+                value={donation.pickupLocation}
+                onChange={handleChange}
+                required
+                style={{
+                  padding: "14px",
+                  borderRadius: "12px",
+                }}
+              />
+
+              <button
+                type="button"
+                onClick={useCurrentLocation}
+                style={{
+                  marginTop: "12px",
+                  border: "none",
+                  backgroundColor: "#dcfce7",
+                  color: "#166534",
+                  padding: "12px 18px",
+                  borderRadius: "12px",
+                  fontWeight: "600",
+                }}
+              >
+                📍 Use Current Location
+              </button>
+            </div>
+
+            <div className="mb-4">
+              <label className="form-label fw-semibold">
+                Description (Optional)
+              </label>
+
+              <textarea
+                rows="4"
+                name="description"
+                className="form-control"
+                placeholder="Add any special instructions or details"
+                value={donation.description}
+                onChange={handleChange}
+                style={{
+                  borderRadius: "12px",
+                  padding: "14px",
+                }}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                className="form-label fw-semibold"
+                style={{ marginBottom: "15px" }}
+              >
+                Upload Food Photos
+              </label>
+
+              <label
+                style={{
+                  display: "block",
+                  padding: "18px",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "16px",
+                  marginBottom: "15px",
+                  cursor: "pointer",
+                  background: "#fafafa",
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  hidden
+                  onChange={handleImageChange}
+                />
+
+                <h6>📷 Take Photo</h6>
+
+                <small className="text-muted">
+                  Use camera to capture food
+                </small>
+              </label>
+
+              <label
+                style={{
+                  display: "block",
+                  padding: "18px",
+                  border: "2px solid #e5e7eb",
+                  borderRadius: "16px",
+                  cursor: "pointer",
+                  background: "#fafafa",
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  hidden
+                  onChange={handleImageChange}
+                />
+
+                <h6>🖼 Upload from Gallery</h6>
+
+                <small className="text-muted">
+                  Choose existing photos
+                </small>
+              </label>
+
+              {images.length > 0 && (
+                <>
+                  <div className="row mt-4">
+                    {images.map((image, index) => (
+                      <div className="col-4 mb-3" key={index}>
+                        <img
+                          src={URL.createObjectURL(image)}
+                          alt="food"
+                          className="img-fluid"
+                          style={{
+                            borderRadius: "14px",
+                            height: "120px",
+                            width: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      className="btn btn-outline-secondary"
+                      onClick={() => setImages([])}
+                    >
+                      Back
+                    </button>
+
+                    <button
+                      type="button"
+                      className="btn btn-success"
+                    >
+                      Done ({images.length})
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+                border: "none",
+                backgroundColor: "#16a34a",
+                color: "white",
+                padding: "16px",
+                borderRadius: "14px",
+                fontSize: "16px",
+                fontWeight: "700",
+              }}
+            >
+              Post Donation
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default AddDonation;
