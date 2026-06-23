@@ -22,7 +22,7 @@ function EmergencyRequest() {
   const handleSubmit = async () => {
     try {
       await axios.post(
-        "http://localhost:8080/api/emergency",
+        "https://food-rescue-backend.onrender.com/api/emergency",
         formData
       );
 
