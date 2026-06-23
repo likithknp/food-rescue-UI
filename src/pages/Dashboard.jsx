@@ -175,12 +175,15 @@ function Dashboard() {
           </p>
 
           <button
+            onClick={() => navigate("/emergency-request")}
             style={{
               background: "#dc2626",
               color: "white",
               border: "none",
               padding: "10px 20px",
               borderRadius: "10px",
+              cursor: "pointer",
+              fontWeight: "bold",
             }}
           >
             Help Now
