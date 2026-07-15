@@ -108,6 +108,7 @@ function Login() {
             </svg>
             <input
               type="email"
+              autoComplete="off"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -146,6 +147,7 @@ function Login() {
             </svg>
             <input
               type={showPassword ? "text" : "password"}
+              autoComplete="new-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"

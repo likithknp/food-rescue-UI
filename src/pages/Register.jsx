@@ -50,7 +50,7 @@ function Register() {
 
             <div className="row justify-content-center">
 
-                <div className="col-md-6">
+                <div className="col-md-4">
 
                     <div className="card shadow">
 
@@ -66,6 +66,7 @@ function Register() {
                                     <label>Full Name</label>
                                     <input
                                         type="text"
+                                        autoComplete="off"
                                         className="form-control"
                                         value={formData.fullName}
                                         onChange={(e) =>
@@ -82,6 +83,7 @@ function Register() {
                                     <label>Email</label>
                                     <input
                                         type="email"
+                                        autoComplete="off"
                                         className="form-control"
                                         value={formData.email}
                                         onChange={(e) =>
@@ -98,6 +100,7 @@ function Register() {
                                     <label>Mobile Number</label>
                                     <input
                                         type="text"
+                                        autoComplete="off"
                                         className="form-control"
                                         value={formData.mobileNumber}
                                         onChange={(e) =>
@@ -114,6 +117,7 @@ function Register() {
                                     <label>Password</label>
                                     <input
                                         type="password"
+                                        autoComplete="new-password"
                                         className="form-control"
                                         value={formData.password}
                                         onChange={(e) =>
