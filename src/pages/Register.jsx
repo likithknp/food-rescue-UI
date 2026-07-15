@@ -31,10 +31,17 @@ function Register() {
 
             console.error(error);
 
-            alert(
-                error.response?.data ||
-                "Registration Failed"
-            );
+            // Prefer server message, fall back to whole response or error message
+            const resp = error.response?.data;
+            let msg = resp?.message || resp || error.message || "Registration Failed";
+            if (typeof msg === "object") {
+                try {
+                    msg = JSON.stringify(msg);
+                } catch {
+                    msg = String(msg);
+                }
+            }
+            alert(msg);
         }
     };
 
