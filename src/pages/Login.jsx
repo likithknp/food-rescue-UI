@@ -18,21 +18,43 @@ function Login() {
       const res = await loginUser({ email, password });
       console.log("Login response:", res.data);
       const data = res.data || {};
+
       // Support common token field names from backend
       const token = data.token || data.accessToken || data.authToken || data.jwt || data?.data?.token || data?.auth_token || data?.access_token;
-      if (!token) {
-        setError(`Login failed: no token returned. Response: ${JSON.stringify(data)}`);
-        setLoading(false);
+
+      if (token) {
+        // store token and navigate
+        try {
+          setToken(token);
+        } catch (e) {
+          console.warn('Failed to persist token', e);
+        }
+        navigate("/dashboard");
         return;
       }
-      setToken(token);
-      setLoading(false);
-      navigate("/dashboard");
+
+      // Some backends (this project) return a success flag and user info instead of a token
+      // Treat that as a successful login as well
+      if (data.success === true || data.success === 'true') {
+        try {
+          const userInfo = { userId: data.userId || data.userID || data?.data?.userId, email: data.email };
+          localStorage.setItem('user', JSON.stringify(userInfo));
+        } catch (e) {
+          console.warn('Failed to persist user info', e);
+        }
+        navigate("/dashboard");
+        return;
+      }
+
+      // No token and no success flag -> treat as error
+      setError(`Login failed: no token returned. Response: ${JSON.stringify(data)}`);
     } catch (err) {
-      setLoading(false);
       // try to extract useful message
       const msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
       setError(typeof msg === "string" ? msg : JSON.stringify(msg));
+    } finally {
+      // Ensure loading state is always cleared so button doesn't stay stuck
+      setLoading(false);
     }
   };
 

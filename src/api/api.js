@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: "https://food-rescue-backend-kcdx.onrender.com/api",
+    timeout: 10000, // 10s timeout to avoid requests hanging indefinitely
     headers: {
         "Content-Type": "application/json"
     }
