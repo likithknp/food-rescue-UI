@@ -16,11 +16,12 @@ function Login() {
     setLoading(true);
     try {
       const res = await loginUser({ email, password });
+      console.log("Login response:", res.data);
       const data = res.data || {};
       // Support common token field names from backend
-      const token = data.token || data.accessToken || data.authToken || data?.data?.token;
+      const token = data.token || data.accessToken || data.authToken || data.jwt || data?.data?.token || data?.auth_token || data?.access_token;
       if (!token) {
-        setError("Login failed: no token returned");
+        setError(`Login failed: no token returned. Response: ${JSON.stringify(data)}`);
         setLoading(false);
         return;
       }
