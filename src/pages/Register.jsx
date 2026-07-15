@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
 
 function Register() {
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -19,7 +19,7 @@ function Register() {
             await registerUser(formData);
 
             alert("Registration Successful");
-
+            navigate("/login");
             setFormData({
                 fullName: "",
                 email: "",
