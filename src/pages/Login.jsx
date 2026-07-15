@@ -1,9 +1,39 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../services/authService";
+import { setToken } from "../utils/tokenUtil";
 
 function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const res = await loginUser({ email, password });
+      const data = res.data || {};
+      // Support common token field names from backend
+      const token = data.token || data.accessToken || data.authToken || data?.data?.token;
+      if (!token) {
+        setError("Login failed: no token returned");
+        setLoading(false);
+        return;
+      }
+      setToken(token);
+      setLoading(false);
+      navigate("/dashboard");
+    } catch (err) {
+      setLoading(false);
+      // try to extract useful message
+      const msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
+      setError(typeof msg === "string" ? msg : JSON.stringify(msg));
+    }
+  };
 
   return (
     <div
@@ -78,6 +108,8 @@ function Login() {
             </svg>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               style={{
                 border: "none",
@@ -114,6 +146,8 @@ function Login() {
             </svg>
             <input
               type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               style={{
                 border: "none",
@@ -143,7 +177,8 @@ function Login() {
 
         {/* Login Button */}
         <button
-          onClick={() => navigate("/dashboard")}
+          onClick={handleLogin}
+          disabled={loading}
           style={{
             padding: "14px",
             backgroundColor: "#16a34a",
@@ -152,12 +187,16 @@ function Login() {
             borderRadius: "10px",
             fontSize: "16px",
             fontWeight: "bold",
-            cursor: "pointer",
+            cursor: loading ? "not-allowed" : "pointer",
             width: "100%",
           }}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
+
+        {error && (
+          <div style={{ color: "#b91c1c", marginTop: "8px", textAlign: "center" }}>{error}</div>
+        )}
 
         {/* Sign Up link */}
         <p style={{ textAlign: "center", fontSize: "14px", color: "#555" }}>
