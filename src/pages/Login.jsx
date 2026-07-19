@@ -26,6 +26,8 @@ function Login() {
         // store token and navigate
         try {
           setToken(token);
+            // notify other components in same tab that auth changed
+            try { window.dispatchEvent(new Event('auth-change')); } catch(e){}
         } catch (e) {
           console.warn('Failed to persist token', e);
         }
@@ -39,6 +41,7 @@ function Login() {
         try {
           const userInfo = { userId: data.userId || data.userID || data?.data?.userId, email: data.email };
           localStorage.setItem('user', JSON.stringify(userInfo));
+          try { window.dispatchEvent(new Event('auth-change')); } catch(e){}
         } catch (e) {
           console.warn('Failed to persist user info', e);
         }
