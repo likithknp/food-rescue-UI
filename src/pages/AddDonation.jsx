@@ -245,11 +245,11 @@ function AddDonation() {
                 }}
               >
                 <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  hidden
-                  onChange={handleImageChange}
+                   type="file"
+                   accept="image/*"
+                   capture
+                   hidden
+                   onChange={handleImageChange}
                 />
 
                 <h6>📷 Take Photo</h6>
