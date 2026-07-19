@@ -19,6 +19,46 @@ function EmergencyRequest() {
     });
   };
 
+  const useCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        try {
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+          );
+
+          const data = await response.json();
+
+          setFormData((prev) => ({
+            ...prev,
+            location:
+              data.display_name ||
+              `${lat}, ${lng}`,
+          }));
+        } catch (error) {
+          console.error(error);
+
+          setFormData((prev) => ({
+            ...prev,
+            location: `${lat}, ${lng}`,
+          }));
+        }
+      },
+      (error) => {
+        console.error(error);
+        alert("Unable to fetch location");
+      }
+    );
+  };
+
   const handleSubmit = async () => {
     try {
       await axios.post(
@@ -106,6 +146,22 @@ function EmergencyRequest() {
           className="form-control mb-3"
           placeholder="Enter complete address"
         />
+
+        <button
+          type="button"
+          onClick={useCurrentLocation}
+          style={{
+            marginBottom: "20px",
+            border: "none",
+            backgroundColor: "#dcfce7",
+            color: "#166534",
+            padding: "12px 18px",
+            borderRadius: "12px",
+            fontWeight: "600",
+          }}
+        >
+          📍 Use Current Location
+        </button>
 
         <label>Reason for Emergency</label>
         <textarea
