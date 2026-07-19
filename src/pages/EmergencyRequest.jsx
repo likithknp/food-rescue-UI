@@ -143,7 +143,7 @@ function EmergencyRequest() {
           name="location"
           value={formData.location}
           onChange={handleChange}
-          className="form-control mb-3"
+          className="form-control"
           placeholder="Enter complete address"
         />
 
@@ -152,6 +152,7 @@ function EmergencyRequest() {
           onClick={useCurrentLocation}
           style={{
             marginTop: "12px",
+            marginBottom: "20px",
             border: "none",
             backgroundColor: "#dcfce7",
             color: "#166534",
@@ -163,7 +164,7 @@ function EmergencyRequest() {
           📍 Use Current Location
         </button>
 
-        <label style={{ marginTop: "20px", display: "block" }}>Reason for Emergency</label>
+        <label>Reason for Emergency</label>
         <textarea
           name="reason"
           value={formData.reason}
