@@ -1,14 +1,45 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Navbar() {
 
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    // Check for user in localStorage on component mount and when auth state changes
+    useEffect(() => {
+        const loadUser = () => {
+            const storedUser = localStorage.getItem("user");
+            setUser(storedUser ? JSON.parse(storedUser) : null);
+        };
+
+        // Load user on mount
+        loadUser();
+
+        // Listen for storage changes (from other tabs)
+        const handleStorageChange = () => {
+            loadUser();
+        };
+
+        // Listen for custom auth state change events (from same tab)
+        const handleAuthStateChanged = () => {
+            loadUser();
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+        window.addEventListener("authStateChanged", handleAuthStateChanged);
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+            window.removeEventListener("authStateChanged", handleAuthStateChanged);
+        };
+    }, []);
 
     const handleLogout = () => {
 
         localStorage.removeItem("user");
+
+        // Dispatch custom event to notify other components of auth state change
+        window.dispatchEvent(new Event('authStateChanged'));
 
         alert("Logged Out Successfully");
 
