@@ -147,25 +147,23 @@ function EmergencyRequest() {
           placeholder="Enter complete address"
         />
 
-        <div style={{ marginBottom: "20px" }}>
-          <button
-            type="button"
-            onClick={useCurrentLocation}
-            style={{
-              border: "none",
-              backgroundColor: "#dcfce7",
-              color: "#166534",
-              padding: "12px 18px",
-              borderRadius: "12px",
-              fontWeight: "600",
-              width: "100%",
-            }}
-          >
-            📍 Use Current Location
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={useCurrentLocation}
+          style={{
+            marginTop: "12px",
+            border: "none",
+            backgroundColor: "#dcfce7",
+            color: "#166534",
+            padding: "12px 18px",
+            borderRadius: "12px",
+            fontWeight: "600",
+          }}
+        >
+          📍 Use Current Location
+        </button>
 
-        <label>Reason for Emergency</label>
+        <label style={{ marginTop: "20px", display: "block" }}>Reason for Emergency</label>
         <textarea
           name="reason"
           value={formData.reason}
