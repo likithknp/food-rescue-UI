@@ -159,12 +159,13 @@ function EmergencyRequest() {
             padding: "12px 18px",
             borderRadius: "12px",
             fontWeight: "600",
+            display: "block",
           }}
         >
           📍 Use Current Location
         </button>
 
-        <label>Reason for Emergency</label>
+        <label style={{ display: "block", marginBottom: "10px", fontWeight: "600" }}>Reason for Emergency</label>
         <textarea
           name="reason"
           value={formData.reason}
