@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import Navbar from "../components/Navbar";
 
 function EmergencyRequest() {
@@ -61,10 +61,8 @@ function EmergencyRequest() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(
-        "https://food-rescue-backend.onrender.com/api/emergency",
-        formData
-      );
+      // Use the central API client so the baseURL and auth headers are consistent
+      await api.post(`/emergency`, formData);
 
       alert("Emergency request broadcast successfully!");
 
@@ -77,8 +75,10 @@ function EmergencyRequest() {
         notes: "",
       });
     } catch (error) {
-      console.error(error);
-      alert("Failed to submit request");
+      console.error("Emergency request error:", error.response || error.message || error);
+      // Show more detailed message when available
+      const msg = error.response?.data?.message || error.response?.data || error.message || "Failed to submit request";
+      alert(msg);
     }
   };
 
