@@ -1,8 +1,11 @@
 import axios from "axios";
 
+// Use localhost for development, fallback to remote URL for production
+const backendURL = import.meta.env.VITE_API_URL || "http://localhost:8081/api";
+
 const api = axios.create({
-    baseURL: "https://food-rescue-backend-kcdx.onrender.com/api",
-    timeout: 10000, // 10s timeout to avoid requests hanging indefinitely
+    baseURL: backendURL,
+    timeout: 30000, // 30s timeout to handle slow connections
     headers: {
         "Content-Type": "application/json"
     }
