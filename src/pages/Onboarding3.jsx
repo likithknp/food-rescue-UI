@@ -1,16 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 function Onboarding3() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // If user is already logged in, redirect to dashboard
-    const user = localStorage.getItem("user");
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
 
   return (
     <div

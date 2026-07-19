@@ -33,20 +33,18 @@ function Login() {
         return;
       }
 
-       // Some backends (this project) return a success flag and user info instead of a token
-       // Treat that as a successful login as well
-       if (data.success === true || data.success === 'true') {
-         try {
-           const userInfo = { userId: data.userId || data.userID || data?.data?.userId, email: data.email };
-           localStorage.setItem('user', JSON.stringify(userInfo));
-           // Dispatch custom event to notify other components of auth state change
-           window.dispatchEvent(new Event('authStateChanged'));
-         } catch (e) {
-           console.warn('Failed to persist user info', e);
-         }
-         navigate("/dashboard");
-         return;
-       }
+      // Some backends (this project) return a success flag and user info instead of a token
+      // Treat that as a successful login as well
+      if (data.success === true || data.success === 'true') {
+        try {
+          const userInfo = { userId: data.userId || data.userID || data?.data?.userId, email: data.email };
+          localStorage.setItem('user', JSON.stringify(userInfo));
+        } catch (e) {
+          console.warn('Failed to persist user info', e);
+        }
+        navigate("/dashboard");
+        return;
+      }
 
       // No token and no success flag -> treat as error
       setError(`Login failed: no token returned. Response: ${JSON.stringify(data)}`);
