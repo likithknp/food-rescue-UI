@@ -50,6 +50,15 @@ function Navbar() {
         setIsLoggedIn(false);
     };
 
+    const handleMobileNav = (path) => {
+        try {
+            // close offcanvas if open
+            const closeBtn = document.querySelector('#mobileMenu .btn-close');
+            if (closeBtn) closeBtn.click();
+        } catch (e) {}
+        navigate(path);
+    };
+
     return (
         <nav className="navbar navbar-dark bg-success sticky-top">
 
@@ -101,17 +110,17 @@ function Navbar() {
                         <div className="navbar-nav">
                             {!isLoggedIn ? (
                                 <>
-                                    <Link className="nav-link text-white py-2" to="/login" data-bs-dismiss="offcanvas">Login</Link>
-                                    <Link className="nav-link text-white py-2" to="/register" data-bs-dismiss="offcanvas">Register</Link>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/login')}>Login</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/register')}>Register</button>
                                 </>
                             ) : (
                                 <>
-                                    <Link className="nav-link text-white py-2" to="/dashboard" data-bs-dismiss="offcanvas">Dashboard</Link>
-                                    <Link className="nav-link text-white py-2" to="/add-donation" data-bs-dismiss="offcanvas">Donate Food</Link>
-                                    <Link className="nav-link text-white py-2" to="/donations" data-bs-dismiss="offcanvas">Available Food</Link>
-                                    <Link className="nav-link text-white py-2" to="/ngos" data-bs-dismiss="offcanvas">NGOs</Link>
-                                    <Link className="nav-link text-white py-2" to="/view-emergency-requests" data-bs-dismiss="offcanvas">Emergency Requests</Link>
-                                    <Link className="nav-link text-white py-2" to="/profile" data-bs-dismiss="offcanvas">Profile</Link>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/dashboard')}>Dashboard</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/add-donation')}>Donate Food</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/donations')}>Available Food</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/ngos')}>NGOs</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/view-emergency-requests')}>Emergency Requests</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/profile')}>Profile</button>
                                     <div className="mt-3">
                                         <button className="btn btn-outline-light w-100" onClick={() => { try { handleLogout(); document.querySelector('#mobileMenu .btn-close')?.click(); } catch(e){} }}>Logout</button>
                                     </div>
