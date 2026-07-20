@@ -106,21 +106,21 @@ function Navbar() {
                         <h5 className="offcanvas-title" id="mobileMenuLabel">Food Rescue</h5>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div className="offcanvas-body">
-                        <div className="navbar-nav">
+                    <div className="offcanvas-body text-start">
+                        <div className="navbar-nav w-100">
                             {!isLoggedIn ? (
                                 <>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/login')}>Login</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/register')}>Register</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/login')}>Login</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/register')}>Register</button>
                                 </>
                             ) : (
                                 <>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/dashboard')}>Dashboard</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/add-donation')}>Donate Food</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/donations')}>Available Food</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/ngos')}>NGOs</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/view-emergency-requests')}>Emergency Requests</button>
-                                    <button type="button" className="nav-link text-white py-2 btn btn-link" onClick={() => handleMobileNav('/profile')}>Profile</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/dashboard')}>Dashboard</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/add-donation')}>Donate Food</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/donations')}>Available Food</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/ngos')}>NGOs</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/view-emergency-requests')}>Emergency Requests</button>
+                                    <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/profile')}>Profile</button>
                                     <div className="mt-3">
                                         <button className="btn btn-outline-light w-100" onClick={() => { try { handleLogout(); document.querySelector('#mobileMenu .btn-close')?.click(); } catch(e){} }}>Logout</button>
                                     </div>
