@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { getAvailableDonations } from "../services/donationService";
 import { createPickupRequest } from "../services/pickupService";
+import { useCallback } from "react";
 
 function Donations() {
 
@@ -10,6 +11,22 @@ function Donations() {
     useEffect(() => {
         loadDonations();
     }, []);
+
+    // Listen for donations created elsewhere in the app and update list live
+    const donationCreatedHandler = useCallback((e) => {
+        const newDonation = e?.detail;
+        if (!newDonation) return;
+
+        // only add if donation is AVAILABLE (matches backend filter)
+        if (newDonation.status === "AVAILABLE") {
+            setDonations((prev) => [newDonation, ...prev]);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("donationCreated", donationCreatedHandler);
+        return () => window.removeEventListener("donationCreated", donationCreatedHandler);
+    }, [donationCreatedHandler]);
 
     const loadDonations = async () => {
         try {
