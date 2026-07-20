@@ -62,8 +62,8 @@ function ViewEmergencyRequests() {
       <div
         style={{
           maxWidth: "1000px",
-          margin: "20px auto",
-          padding: "20px",
+          margin: "0 auto",
+          padding: "15px",
         }}
       >
         <h2>🚨 Emergency Requests</h2>

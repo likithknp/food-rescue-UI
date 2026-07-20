@@ -46,11 +46,11 @@ function Donations() {
         <>
             <Navbar />
 
-            <div className="container mt-4">
+            <div className="container-fluid" style={{ padding: "15px" }}>
 
-                <h2>Available Food Donations</h2>
+                <h2 style={{ marginTop: "10px" }}>Available Food Donations</h2>
 
-                <div className="row">
+                <div className="row g-3">
 
                     {donations.length === 0 ? (
                         <div className="col-12">
@@ -61,7 +61,7 @@ function Donations() {
                     ) : (
                         donations.map((food) => (
                             <div
-                                className="col-md-4 mt-3"
+                                className="col-12 col-sm-6 col-md-4"
                                 key={food.id}
                             >
                                 <div className="card shadow">

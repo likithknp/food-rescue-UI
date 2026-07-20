@@ -131,7 +131,7 @@ function AddDonation() {
         style={{
           minHeight: "100vh",
           backgroundColor: "#f0faf0",
-          padding: "30px 15px",
+          padding: "15px",
         }}
       >
         <div
@@ -139,8 +139,8 @@ function AddDonation() {
             maxWidth: "700px",
             margin: "0 auto",
             background: "#fff",
-            borderRadius: "24px",
-            padding: "30px",
+            borderRadius: "16px",
+            padding: "20px",
             boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
           }}
         >

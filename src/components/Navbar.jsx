@@ -51,85 +51,74 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+        <nav className="navbar navbar-dark bg-success sticky-top">
 
-            <div className="container">
+            <div className="container-fluid">
 
                 <Link className="navbar-brand fw-bold" to="/">
                     Food Rescue
                 </Link>
 
-                <div className="navbar-nav ms-auto">
+                {/* Mobile: offcanvas toggle */}
+                <button
+                    className="btn btn-outline-light d-md-none"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#mobileMenu"
+                    aria-controls="mobileMenu"
+                    aria-label="Open menu"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
+                {/* Desktop nav (visible on md and up) */}
+                <div className="d-none d-md-flex navbar-nav ms-auto">
                     {!isLoggedIn ? (
                         <>
-                            <Link
-                                className="nav-link text-white"
-                                to="/login"
-                            >
-                                Login
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/register"
-                            >
-                                Register
-                            </Link>
+                            <Link className="nav-link text-white" to="/login">Login</Link>
+                            <Link className="nav-link text-white" to="/register">Register</Link>
                         </>
                     ) : (
                         <>
-                            <Link
-                                className="nav-link text-white"
-                                to="/dashboard"
-                            >
-                                Dashboard
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/add-donation"
-                            >
-                                Donate Food
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/donations"
-                            >
-                                Available Food
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/ngos"
-                            >
-                                NGOs
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/view-emergency-requests"
-                            >
-                                Emergency Requests
-                            </Link>
-
-                            <Link
-                                className="nav-link text-white"
-                                to="/profile"
-                            >
-                                Profile
-                            </Link>
-
-                            <button
-                                className="btn btn-outline-light ms-2"
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
+                            <Link className="nav-link text-white" to="/dashboard">Dashboard</Link>
+                            <Link className="nav-link text-white" to="/add-donation">Donate Food</Link>
+                            <Link className="nav-link text-white" to="/donations">Available Food</Link>
+                            <Link className="nav-link text-white" to="/ngos">NGOs</Link>
+                            <Link className="nav-link text-white" to="/view-emergency-requests">Emergency Requests</Link>
+                            <Link className="nav-link text-white" to="/profile">Profile</Link>
+                            <button className="btn btn-outline-light ms-2" onClick={handleLogout}>Logout</button>
                         </>
                     )}
+                </div>
 
+                {/* Offcanvas mobile menu (shows on small screens) */}
+                <div className="offcanvas offcanvas-end text-bg-success" tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+                    <div className="offcanvas-header">
+                        <h5 className="offcanvas-title" id="mobileMenuLabel">Food Rescue</h5>
+                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div className="offcanvas-body">
+                        <div className="navbar-nav">
+                            {!isLoggedIn ? (
+                                <>
+                                    <Link className="nav-link text-white py-2" to="/login" data-bs-dismiss="offcanvas">Login</Link>
+                                    <Link className="nav-link text-white py-2" to="/register" data-bs-dismiss="offcanvas">Register</Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link className="nav-link text-white py-2" to="/dashboard" data-bs-dismiss="offcanvas">Dashboard</Link>
+                                    <Link className="nav-link text-white py-2" to="/add-donation" data-bs-dismiss="offcanvas">Donate Food</Link>
+                                    <Link className="nav-link text-white py-2" to="/donations" data-bs-dismiss="offcanvas">Available Food</Link>
+                                    <Link className="nav-link text-white py-2" to="/ngos" data-bs-dismiss="offcanvas">NGOs</Link>
+                                    <Link className="nav-link text-white py-2" to="/view-emergency-requests" data-bs-dismiss="offcanvas">Emergency Requests</Link>
+                                    <Link className="nav-link text-white py-2" to="/profile" data-bs-dismiss="offcanvas">Profile</Link>
+                                    <div className="mt-3">
+                                        <button className="btn btn-outline-light w-100" onClick={() => { try { handleLogout(); document.querySelector('#mobileMenu .btn-close')?.click(); } catch(e){} }}>Logout</button>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
                 </div>
 
             </div>

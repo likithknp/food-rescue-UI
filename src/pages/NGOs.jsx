@@ -56,9 +56,9 @@ function NGOs() {
     <>
       <Navbar />
 
-      <div className="container mt-4">
+      <div className="container-fluid" style={{ padding: "15px" }}>
 
-        <h2 className="mb-4">Nearby NGOs</h2>
+        <h2 className="mb-4" style={{ marginTop: "10px" }}>Nearby NGOs</h2>
 
         {location && (
           <div className="alert alert-success">
@@ -76,12 +76,12 @@ function NGOs() {
           </div>
         )}
 
-        <div className="row">
+        <div className="row g-3">
 
           {ngos.map((ngo) => (
 
             <div
-              className="col-md-4 mt-3"
+              className="col-12 col-sm-6 col-md-4"
               key={ngo.id}
             >
 
