@@ -77,7 +77,7 @@ function Donations() {
                                         </p>
 
                                         <p>
-                                            Location: {food.location}
+                                            Location: {food.pickupLocation}
                                         </p>
 
                                         <button

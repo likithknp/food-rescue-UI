@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { createDonation } from "../services/donationService";
 
 function AddDonation() {
+  const navigate = useNavigate();
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [donation, setDonation] = useState({
     foodName: "",
@@ -64,13 +68,56 @@ function AddDonation() {
   );
 };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Donation:", donation);
-    console.log("Images:", images);
+    if (!donation.foodName || !donation.quantity || !donation.expiryTime || !donation.pickupLocation) {
+      alert("Please fill in all required fields");
+      return;
+    }
 
-    alert("Donation submitted successfully");
+    setLoading(true);
+
+    try {
+      // Prepare the donation data in the format the backend expects
+      const donationData = {
+        foodName: donation.foodName,
+        quantity: donation.quantity,
+        expiryTime: donation.expiryTime,
+        pickupLocation: donation.pickupLocation,
+        description: donation.description,
+        status: "AVAILABLE"
+      };
+
+      console.log("Submitting donation:", donationData);
+
+      // Call the API to create the donation
+      const response = await createDonation(donationData);
+
+      console.log("Donation response:", response.data);
+
+      alert("Donation posted successfully!");
+
+      // Clear form and redirect to donations page
+      setDonation({
+        foodName: "",
+        quantity: "",
+        expiryTime: "",
+        pickupLocation: "",
+        description: "",
+      });
+      setImages([]);
+
+      // Redirect to the donations page to see the new donation
+      navigate("/donations");
+
+    } catch (error) {
+      console.error("Error submitting donation:", error);
+      const msg = error?.response?.data?.message || error?.response?.data || error.message || "Failed to post donation";
+      alert(typeof msg === "string" ? msg : JSON.stringify(msg));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -326,6 +373,7 @@ function AddDonation() {
 
             <button
               type="submit"
+              disabled={loading}
               style={{
                 width: "100%",
                 border: "none",
@@ -335,9 +383,11 @@ function AddDonation() {
                 borderRadius: "14px",
                 fontSize: "16px",
                 fontWeight: "700",
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.7 : 1,
               }}
             >
-              Post Donation
+              {loading ? "Posting..." : "Post Donation"}
             </button>
           </form>
         </div>
