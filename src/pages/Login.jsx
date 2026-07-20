@@ -66,7 +66,15 @@ function Login() {
       setError(`Login failed: no token returned. Response: ${JSON.stringify(data)}`);
     } catch (err) {
       // try to extract useful message
-      const msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
+      let msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
+
+      // Provide more helpful message for timeout errors
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        msg = "Request timed out. The backend server may be starting up. Please try again in a few seconds.";
+      } else if (err.message === 'Network Error' && !err.response) {
+        msg = "Network error. Please check your internet connection or try again later.";
+      }
+
       setError(typeof msg === "string" ? msg : JSON.stringify(msg));
     } finally {
       // Ensure loading state is always cleared so button doesn't stay stuck
