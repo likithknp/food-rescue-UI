@@ -26,8 +26,21 @@ function Login() {
         // store token and navigate
         try {
           setToken(token);
+          // also persist minimal user info if returned so Profile and Navbar can display details
+          try {
+            const userInfo = {};
+            if (data.userId) userInfo.userId = data.userId;
+            if (data.email) userInfo.email = data.email;
+            if (data.fullName) userInfo.fullName = data.fullName;
+            if (data.mobileNumber) userInfo.mobileNumber = data.mobileNumber;
+            if (Object.keys(userInfo).length > 0) {
+              localStorage.setItem('user', JSON.stringify(userInfo));
+            }
             // notify other components in same tab that auth changed
             try { window.dispatchEvent(new Event('auth-change')); } catch(e){}
+          } catch (e) {
+            console.warn('Failed to persist user info from login response', e);
+          }
         } catch (e) {
           console.warn('Failed to persist token', e);
         }
