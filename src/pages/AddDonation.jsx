@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { createDonation } from "../services/donationService";
-import Toast from "../components/Toast";
 
 function AddDonation() {
   const [images, setImages] = useState([]);
@@ -69,9 +68,6 @@ function AddDonation() {
 
   const navigate = useNavigate();
 
-  const [toastVisible, setToastVisible] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -92,29 +88,13 @@ function AddDonation() {
       const response = await createDonation(payload);
       console.log("Create donation response:", response.data);
 
-      // show non-blocking toast
-      setToastMessage("Donation submitted successfully");
-      setToastVisible(true);
+      alert("Donation submitted successfully");
 
-      // notify other parts of the app so they can update without refresh
-      try {
-        window.dispatchEvent(
-          new CustomEvent("donationCreated", { detail: response.data })
-        );
-      } catch (e) {
-        // silently ignore if dispatch fails
-      }
-
-      // auto-redirect after short delay (no user click required)
-      setTimeout(() => {
-        setToastVisible(false);
-        navigate("/dashboard");
-      }, 1100);
+      // Redirect to dashboard so user sees updated info
+      navigate("/dashboard");
     } catch (error) {
       console.error("Failed to create donation:", error);
-      setToastMessage("Failed to submit donation. Please try again.");
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 2500);
+      alert("Failed to submit donation. Please try again.");
     }
   };
 
