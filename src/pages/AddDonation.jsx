@@ -80,10 +80,13 @@ function AddDonation() {
 
     try {
       // Prepare the donation data in the format the backend expects
+      // Convert date string (YYYY-MM-DD) to LocalDateTime format (YYYY-MM-DDTHH:mm:ss)
+      const expiryDateTime = donation.expiryTime ? `${donation.expiryTime}T23:59:59` : "";
+
       const donationData = {
         foodName: donation.foodName,
         quantity: donation.quantity,
-        expiryTime: donation.expiryTime,
+        expiryTime: expiryDateTime,
         pickupLocation: donation.pickupLocation,
         description: donation.description,
         status: "AVAILABLE"
