@@ -109,6 +109,13 @@ function Navbar() {
 
                             <Link
                                 className="nav-link text-white"
+                                to="/view-emergency-requests"
+                            >
+                                Emergency Requests
+                            </Link>
+
+                            <Link
+                                className="nav-link text-white"
                                 to="/profile"
                             >
                                 Profile

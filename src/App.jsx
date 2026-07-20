@@ -12,6 +12,7 @@ import NGOs from "./pages/NGOs";
 import PickupRequests from "./pages/PickupRequests";
 import Profile from "./pages/Profile";
 import EmergencyRequest from "./pages/EmergencyRequest";
+import ViewEmergencyRequests from "./pages/ViewEmergencyRequests";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/pickups" element={<PickupRequests />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/emergency-request" element={<EmergencyRequest />} />
+        <Route path="/view-emergency-requests" element={<ViewEmergencyRequests />} />
 
       </Routes>
     </BrowserRouter>
