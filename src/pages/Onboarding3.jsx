@@ -6,14 +6,16 @@ function Onboarding3() {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#f0faf0",
         padding: "20px",
+        paddingBottom: "100px",
         boxSizing: "border-box",
+        gap: "30px",
       }}
     >
       {/* Skip button */}
@@ -33,6 +35,7 @@ function Onboarding3() {
           flexDirection: "column",
           alignItems: "center",
           gap: "20px",
+          flex: "0 1 auto",
         }}
       >
         {/* Yellow circle with award icon */}
@@ -81,8 +84,8 @@ function Onboarding3() {
         </p>
       </div>
 
-      {/* Get Started button */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      {/* Get Started button - Fixed position for mobile visibility */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", position: "fixed", bottom: "20px", right: "20px", zIndex: 100 }}>
         <button
           onClick={() => navigate("/login")}
           style={{
@@ -96,6 +99,7 @@ function Onboarding3() {
             display: "flex",
             alignItems: "center",
             gap: "8px",
+            boxShadow: "0 4px 12px rgba(22, 163, 74, 0.3)",
           }}
         >
           Get Started →

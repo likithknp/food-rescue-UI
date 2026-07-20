@@ -6,14 +6,16 @@ function Onboarding2() {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#f0faf0",
         padding: "20px",
+        paddingBottom: "100px",
         boxSizing: "border-box",
+        gap: "30px",
       }}
     >
       {/* Skip button */}
@@ -33,6 +35,7 @@ function Onboarding2() {
           flexDirection: "column",
           alignItems: "center",
           gap: "20px",
+          flex: "0 1 auto",
         }}
       >
         {/* Icon circle */}
@@ -82,8 +85,8 @@ function Onboarding2() {
         </p>
       </div>
 
-      {/* Next button */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      {/* Next button - Fixed position for mobile visibility */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", position: "fixed", bottom: "20px", right: "20px", zIndex: 100 }}>
         <button
           onClick={() => navigate("/onboarding-3")}
           style={{
@@ -97,6 +100,7 @@ function Onboarding2() {
             display: "flex",
             alignItems: "center",
             gap: "8px",
+            boxShadow: "0 4px 12px rgba(232, 68, 10, 0.3)",
           }}
         >
           Next →

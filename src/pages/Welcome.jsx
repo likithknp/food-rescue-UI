@@ -6,7 +6,7 @@ function Welcome() {
   return (
     <div
       style={{
-        minHeight: "100dvh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -14,6 +14,7 @@ function Welcome() {
         backgroundColor: "#f8f8f2",
         textAlign: "center",
         padding: "20px",
+        paddingBottom: "100px",
         boxSizing: "border-box",
       }}
     >
@@ -66,6 +67,7 @@ function Welcome() {
           borderRadius: "10px",
           fontSize: "18px",
           cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(0, 128, 0, 0.3)",
         }}
       >
         Next
