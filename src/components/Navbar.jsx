@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 function Navbar() {
 
     const navigate = useNavigate();
+    const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
 
     // read both explicit stored user object and auth token
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -51,11 +52,7 @@ function Navbar() {
     };
 
     const handleMobileNav = (path) => {
-        try {
-            // close offcanvas if open
-            const closeBtn = document.querySelector('#mobileMenu .btn-close');
-            if (closeBtn) closeBtn.click();
-        } catch (e) {}
+        setIsOffcanvasOpen(false);
         navigate(path);
     };
 
@@ -72,8 +69,7 @@ function Navbar() {
                 <button
                     className="btn btn-outline-light d-md-none"
                     type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#mobileMenu"
+                    onClick={() => setIsOffcanvasOpen(!isOffcanvasOpen)}
                     aria-controls="mobileMenu"
                     aria-label="Open menu"
                 >
@@ -101,10 +97,10 @@ function Navbar() {
                 </div>
 
                 {/* Offcanvas mobile menu (shows on small screens) */}
-                <div className="offcanvas offcanvas-end text-bg-success" tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+                <div className={`offcanvas offcanvas-end text-bg-success ${isOffcanvasOpen ? 'show' : ''}`} tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style={{ visibility: isOffcanvasOpen ? 'visible' : 'hidden' }}>
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title" id="mobileMenuLabel">Food Rescue</h5>
-                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" className="btn-close btn-close-white" onClick={() => setIsOffcanvasOpen(false)} aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body text-start">
                         <div className="navbar-nav w-100">
@@ -122,13 +118,16 @@ function Navbar() {
                                     <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/view-emergency-requests')}>Emergency Requests</button>
                                     <button type="button" className="nav-link text-white py-2 btn btn-link text-start" onClick={() => handleMobileNav('/profile')}>Profile</button>
                                     <div className="mt-3">
-                                        <button className="btn btn-outline-light w-100" onClick={() => { try { handleLogout(); document.querySelector('#mobileMenu .btn-close')?.click(); } catch(e){} }}>Logout</button>
+                                        <button className="btn btn-outline-light w-100" onClick={() => { setIsOffcanvasOpen(false); handleLogout(); }}>Logout</button>
                                     </div>
                                 </>
                             )}
                         </div>
                     </div>
                 </div>
+
+                {/* Backdrop overlay for offcanvas */}
+                {isOffcanvasOpen && <div className="offcanvas-backdrop fade show" onClick={() => setIsOffcanvasOpen(false)}></div>}
 
             </div>
 
