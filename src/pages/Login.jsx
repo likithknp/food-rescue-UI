@@ -70,7 +70,7 @@ function Login() {
 
       // Provide more helpful message for timeout errors
       if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
-        msg = "Request timed out. The backend server may be starting up. Please try again in a few seconds.";
+        msg = "Connection timed out. The server may be slow to respond. If you just tried again, it should work now. Otherwise, please wait a moment and try again.";
       } else if (err.message === 'Network Error' && !err.response) {
         msg = "Network error. Please check your internet connection or try again later.";
       }
