@@ -56,55 +56,67 @@ function NGOs() {
     <>
       <Navbar />
 
-      <div className="container-fluid" style={{ padding: "15px" }}>
-
-        <h2 className="mb-4" style={{ marginTop: "10px" }}>Nearby NGOs</h2>
+      <div className="page-container">
+        <div className="page-header" style={{ marginBottom: '40px' }}>
+          <h1>🏢 Nearby NGOs & Organizations</h1>
+          <p className="subtitle">Connect with organizations dedicated to reducing food waste and helping communities.</p>
+        </div>
 
         {location && (
-          <div className="alert alert-success">
-            <strong>Current Location</strong>
-            <br />
-            Latitude: {location.latitude}
-            <br />
-            Longitude: {location.longitude}
+          <div className="alert alert-info mb-5" style={{ marginBottom: '40px' }}>
+            <strong style={{ color: '#2563EB', fontWeight: 600 }}>📍 Your Location</strong>
+            <p style={{ margin: '8px 0 0 0', fontSize: '14px' }}>Latitude: <span style={{ fontWeight: 500 }}>{location.latitude.toFixed(4)}</span> | Longitude: <span style={{ fontWeight: 500 }}>{location.longitude.toFixed(4)}</span></p>
           </div>
         )}
 
         {error && (
-          <div className="alert alert-danger">
-            {error}
+          <div className="alert alert-danger mb-5">
+            <strong>⚠️ Unable to fetch location</strong>
+            <p style={{ margin: '8px 0 0 0' }}>{error}</p>
           </div>
         )}
 
-        <div className="row g-3">
-
+        <div className="row g-4">
           {ngos.map((ngo) => (
-
             <div
-              className="col-12 col-sm-6 col-md-4"
+              className="col-12 col-sm-6 col-lg-4"
               key={ngo.id}
+              style={{ marginBottom: '16px' }}
             >
+              <div className="card h-100" style={{ cursor: 'pointer', transition: 'all 0.25s ease' }}>
+                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div>
+                    <h5 style={{ margin: 0, marginBottom: '8px', fontSize: '18px', fontWeight: 700, color: '#111827' }}>
+                      {ngo.name}
+                    </h5>
+                    <p style={{ margin: 0, color: '#6B7280', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      📍 {ngo.city}
+                    </p>
+                  </div>
 
-              <div className="card shadow h-100">
-
-                <div className="card-body">
-
-                  <h5>{ngo.name}</h5>
-
-                  <p className="text-muted">
-                    {ngo.city}
-                  </p>
-
+                  <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+                    <span className="badge badge-success" style={{ marginRight: 'auto' }}>✓ Active</span>
+                    <span className="badge badge-info">Learn more →</span>
+                  </div>
                 </div>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
 
+        {ngos.length === 0 && (
+          <div style={{
+            textAlign: 'center',
+            padding: '60px 20px',
+            background: 'white',
+            borderRadius: '16px',
+            boxShadow: '0 8px 24px rgba(15,23,42,0.08)'
+          }}>
+            <p style={{ fontSize: '18px', color: '#6B7280', margin: 0 }}>
+              🔍 No NGOs found in your area yet. Check back soon!
+            </p>
+          </div>
+        )}
       </div>
     </>
   );

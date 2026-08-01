@@ -7,93 +7,96 @@ function Profile() {
     <>
       <Navbar />
 
-      <div
-        style={{
-          minHeight: "100vh",
-          backgroundColor: "#f0faf0",
-          padding: "30px 15px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "700px",
-            margin: "0 auto",
-            background: "#fff",
-            borderRadius: "24px",
-            padding: "30px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          }}
-        >
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: "30px",
-            }}
-          >
+      <div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", padding: "40px 15px" }}>
+        <div style={{
+          maxWidth: "720px",
+          margin: "0 auto",
+          background: "#FFFFFF",
+          borderRadius: "16px",
+          padding: "40px",
+          boxShadow: "0 8px 24px rgba(15,23,42,0.08)",
+        }}>
+          <div style={{ textAlign: "center", marginBottom: "40px" }}>
             <div
               style={{
-                width: "90px",
-                height: "90px",
+                width: "100px",
+                height: "100px",
                 borderRadius: "50%",
-                backgroundColor: "#16a34a",
+                background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                 color: "#fff",
-                fontSize: "32px",
-                fontWeight: "bold",
+                fontSize: "44px",
+                fontWeight: "700",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                margin: "0 auto 15px",
+                margin: "0 auto 20px",
+                boxShadow: "0 8px 24px rgba(37, 99, 235, 0.3)"
               }}
             >
               {user?.fullName?.charAt(0)?.toUpperCase() || "U"}
             </div>
 
-            <h2
-              style={{
-                color: "#166534",
-                fontWeight: "700",
-              }}
-            >
-              Hello, {user?.fullName || "User"} 👋
-            </h2>
+            <h1 style={{
+              color: "#111827",
+              fontWeight: "700",
+              margin: "0 0 8px 0",
+              fontSize: "32px"
+            }}>
+              {user?.fullName || "User"} 👋
+            </h1>
 
-            <p
-              style={{
-                color: "#666",
-                marginTop: "10px",
-              }}
-            >
-              Welcome to Food Rescue
+            <p style={{
+              color: "#6B7280",
+              marginTop: "0",
+              fontSize: "15px"
+            }}>
+              Welcome to FoodBridge - Reducing Food Waste Together
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: "#f8fafc",
-              borderRadius: "16px",
-              padding: "20px",
-            }}
-          >
-            <div className="mb-3">
-              <strong>Full Name</strong>
-              <p className="mb-0">
+          <div style={{
+            backgroundColor: "#F8FAFC",
+            borderRadius: "12px",
+            padding: "28px",
+            marginBottom: "28px"
+          }}>
+            <div style={{ marginBottom: "24px" }}>
+              <label style={{ fontSize: '12px', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '8px' }}>
+                👤 Full Name
+              </label>
+              <p style={{ margin: "0", color: "#111827", fontSize: '16px', fontWeight: 500 }}>
                 {user?.fullName || "Not Available"}
               </p>
             </div>
 
-            <div className="mb-3">
-              <strong>Email</strong>
-              <p className="mb-0">
+            <div style={{ marginBottom: "24px" }}>
+              <label style={{ fontSize: '12px', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '8px' }}>
+                ✉️ Email
+              </label>
+              <p style={{ margin: "0", color: "#111827", fontSize: '16px', fontWeight: 500 }}>
                 {user?.email || "Not Available"}
               </p>
             </div>
 
-            <div className="mb-3">
-              <strong>Mobile Number</strong>
-              <p className="mb-0">
+            <div>
+              <label style={{ fontSize: '12px', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '8px' }}>
+                📞 Mobile Number
+              </label>
+              <p style={{ margin: "0", color: "#111827", fontSize: '16px', fontWeight: 500 }}>
                 {user?.mobileNumber || "Not Available"}
               </p>
             </div>
+          </div>
+
+          <div style={{
+            padding: '20px',
+            background: 'rgba(34, 197, 94, 0.05)',
+            borderLeft: '4px solid #22C55E',
+            borderRadius: '8px'
+          }}>
+            <p style={{ margin: 0, color: '#16A34A', fontSize: '14px', fontWeight: 500 }}>
+              ✓ Your account is active and verified
+            </p>
           </div>
         </div>
       </div>

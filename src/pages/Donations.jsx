@@ -46,55 +46,64 @@ function Donations() {
         <>
             <Navbar />
 
-            <div className="container-fluid page-container">
+            <div className="page-container">
+                <div className="page-header" style={{ marginBottom: '40px' }}>
+                    <h1>🍽️ Available Food Donations</h1>
+                    <p className="subtitle">Browse available food donations and request pickups for your organization.</p>
+                </div>
 
-                <h2>Available Food Donations</h2>
-
-                <div className="row g-3">
-
-                    {donations.length === 0 ? (
-                        <div className="col-12">
-                            <div className="alert alert-info">
-                                No food donations available.
-                            </div>
-                        </div>
-                    ) : (
-                        donations.map((food) => (
+                {donations.length === 0 ? (
+                    <div className="alert alert-info" style={{ marginBottom: '40px' }}>
+                        <strong>ℹ️ No Donations Available</strong>
+                        <p style={{ margin: '8px 0 0 0' }}>No food donations are currently available. Please check back soon!</p>
+                    </div>
+                ) : (
+                    <div className="row g-4">
+                        {donations.map((food) => (
                             <div
-                                className="col-12 col-sm-6 col-md-4"
+                                className="col-12 col-sm-6 col-lg-4"
                                 key={food.id}
                             >
-                                <div className="card shadow">
+                                <div className="card" style={{ cursor: 'pointer', transition: 'all 0.25s ease', display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                        <h4 style={{ margin: '0 0 8px 0', color: '#111827', fontSize: '18px', fontWeight: 700 }}>
+                                            🍖 {food.foodName}
+                                        </h4>
 
-                                    <div className="card-body">
+                                        <div style={{ marginBottom: '16px', flex: 1 }}>
+                                            <p style={{ margin: '0 0 12px 0', fontSize: '14px', color: '#6B7280' }}>
+                                                <strong style={{ color: '#111827' }}>📦 Quantity:</strong> {food.quantity}
+                                            </p>
 
-                                        <h5>
-                                            {food.foodName}
-                                        </h5>
+                                            <p style={{ margin: '0 0 12px 0', fontSize: '14px', color: '#6B7280' }}>
+                                                <strong style={{ color: '#111827' }}>📍 Location:</strong> {food.pickupLocation}
+                                            </p>
 
-                                        <p>
-                                            Quantity: {food.quantity}
-                                        </p>
+                                            {food.description && (
+                                                <p style={{ margin: '0', fontSize: '14px', color: '#6B7280', fontStyle: 'italic' }}>
+                                                    <strong style={{ color: '#111827' }}>💬 Details:</strong> {food.description}
+                                                </p>
+                                            )}
+                                        </div>
 
-                                        <p>
-                                            Location: {food.pickupLocation}
-                                        </p>
-
-                                        <button
-                                            className="btn btn-success"
-                                            onClick={() => requestPickup(food)}
-                                        >
-                                            Request Pickup
-                                        </button>
-
+                                        <span className="badge badge-success" style={{ alignSelf: 'flex-start', marginBottom: '16px' }}>
+                                            ✓ {food.status || 'AVAILABLE'}
+                                        </span>
                                     </div>
+
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() => requestPickup(food)}
+                                        style={{ width: '100%' }}
+                                    >
+                                        Request Pickup →
+                                    </button>
 
                                 </div>
                             </div>
-                        ))
-                    )}
-
-                </div>
+                        ))}
+                    </div>
+                )}
 
             </div>
         </>

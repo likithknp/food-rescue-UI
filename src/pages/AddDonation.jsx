@@ -127,65 +127,51 @@ function AddDonation() {
     <>
       <Navbar />
 
-      <div
-        style={{
-          minHeight: "100vh",
-          backgroundColor: "#f0faf0",
-          padding: "15px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "700px",
-            margin: "0 auto",
-            background: "#fff",
-            borderRadius: "16px",
-            padding: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: "700",
-              marginBottom: "25px",
-              color: "#166534",
-            }}
-          >
-            Add Food Donation
-          </h2>
+      <div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", padding: "40px 15px" }}>
+        <div style={{
+          maxWidth: "720px",
+          margin: "0 auto",
+          background: "#FFFFFF",
+          borderRadius: "16px",
+          padding: "40px",
+          boxShadow: "0 8px 24px rgba(15,23,42,0.08)",
+        }}>
+          <div style={{ marginBottom: "32px" }}>
+            <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 700, color: '#111827' }}>
+              🍖 Add Food Donation
+            </h1>
+            <p style={{ margin: '8px 0 0 0', color: '#6B7280', fontSize: '15px' }}>
+              Help us reduce food waste by donating available food to those in need.
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="form-label fw-semibold">
+              <label className="form-label">
                 Food Type
               </label>
-
               <select
                 className="form-select"
                 name="foodName"
                 value={donation.foodName}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "14px",
-                  borderRadius: "12px",
-                }}
+                style={{ padding: "12px 14px", borderRadius: "10px" }}
               >
                 <option value="">Select food type</option>
-                <option value="Cooked Food">Cooked Food</option>
-                <option value="Packed Food">Packed Food</option>
-                <option value="Vegetables">Vegetables</option>
-                <option value="Fruits">Fruits</option>
-                <option value="Bakery Items">Bakery Items</option>
-                <option value="Beverages">Beverages</option>
+                <option value="Cooked Food">🍚 Cooked Food</option>
+                <option value="Packed Food">📦 Packed Food</option>
+                <option value="Vegetables">🥕 Vegetables</option>
+                <option value="Fruits">🍎 Fruits</option>
+                <option value="Bakery Items">🥐 Bakery Items</option>
+                <option value="Beverages">🥤 Beverages</option>
               </select>
             </div>
 
             <div className="mb-4">
-              <label className="form-label fw-semibold">
+              <label className="form-label">
                 Quantity
               </label>
-
               <input
                 type="text"
                 name="quantity"
@@ -194,18 +180,14 @@ function AddDonation() {
                 value={donation.quantity}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "14px",
-                  borderRadius: "12px",
-                }}
+                style={{ padding: "12px 14px", borderRadius: "10px" }}
               />
             </div>
 
             <div className="mb-4">
-              <label className="form-label fw-semibold">
+              <label className="form-label">
                 Expiry Date
               </label>
-
               <input
                 type="date"
                 name="expiryTime"
@@ -213,18 +195,14 @@ function AddDonation() {
                 value={donation.expiryTime}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "14px",
-                  borderRadius: "12px",
-                }}
+                style={{ padding: "12px 14px", borderRadius: "10px" }}
               />
             </div>
 
             <div className="mb-4">
-              <label className="form-label fw-semibold">
+              <label className="form-label">
                 Pickup Location
               </label>
-
               <input
                 type="text"
                 name="pickupLocation"
@@ -233,10 +211,7 @@ function AddDonation() {
                 value={donation.pickupLocation}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "14px",
-                  borderRadius: "12px",
-                }}
+                style={{ padding: "12px 14px", borderRadius: "10px" }}
               />
 
               <button
@@ -245,22 +220,26 @@ function AddDonation() {
                 style={{
                   marginTop: "12px",
                   border: "none",
-                  backgroundColor: "#dcfce7",
-                  color: "#166534",
+                  backgroundColor: "rgba(34, 197, 94, 0.1)",
+                  color: "#22C55E",
                   padding: "12px 18px",
-                  borderRadius: "12px",
+                  borderRadius: "10px",
                   fontWeight: "600",
+                  fontSize: "14px",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease"
                 }}
+                onMouseOver={(e) => e.target.style.backgroundColor = "rgba(34, 197, 94, 0.15)"}
+                onMouseOut={(e) => e.target.style.backgroundColor = "rgba(34, 197, 94, 0.1)"}
               >
                 📍 Use Current Location
               </button>
             </div>
 
             <div className="mb-4">
-              <label className="form-label fw-semibold">
+              <label className="form-label">
                 Description (Optional)
               </label>
-
               <textarea
                 rows="4"
                 name="description"
@@ -268,57 +247,63 @@ function AddDonation() {
                 placeholder="Add any special instructions or details"
                 value={donation.description}
                 onChange={handleChange}
-                style={{
-                  borderRadius: "12px",
-                  padding: "14px",
-                }}
+                style={{ borderRadius: "10px", padding: "12px 14px", resize: "vertical" }}
               />
             </div>
 
             <div className="mb-4">
-              <label
-                className="form-label fw-semibold"
-                style={{ marginBottom: "15px" }}
-              >
-                Upload Food Photos
+              <label className="form-label" style={{ marginBottom: "16px" }}>
+                📷 Upload Food Photos
               </label>
 
-              <label
-                style={{
-                  display: "block",
-                  padding: "18px",
-                  border: "2px solid #e5e7eb",
-                  borderRadius: "16px",
-                  marginBottom: "15px",
-                  cursor: "pointer",
-                  background: "#fafafa",
-                }}
-              >
+              <label style={{
+                display: "block",
+                padding: "20px",
+                border: "2px dashed #E5E7EB",
+                borderRadius: "12px",
+                marginBottom: "12px",
+                cursor: "pointer",
+                background: "#F9FAFB",
+                transition: "all 0.25s ease"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.borderColor = '#2563EB';
+                e.currentTarget.style.background = 'rgba(37, 99, 235, 0.03)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB';
+                e.currentTarget.style.background = '#F9FAFB';
+              }}>
                 <input
-                   type="file"
-                   accept="image/*"
-                   capture
-                   hidden
-                   onChange={handleImageChange}
+                  type="file"
+                  accept="image/*"
+                  capture
+                  hidden
+                  onChange={handleImageChange}
                 />
-
-                <h6>📷 Take Photo</h6>
-
-                <small className="text-muted">
-                  Use camera to capture food
+                <h6 style={{ margin: 0, marginBottom: '4px', color: '#111827', fontWeight: 600 }}>Take Photo with Camera</h6>
+                <small style={{ color: '#6B7280' }}>
+                  Capture fresh photo of your food donation
                 </small>
               </label>
 
-              <label
-                style={{
-                  display: "block",
-                  padding: "18px",
-                  border: "2px solid #e5e7eb",
-                  borderRadius: "16px",
-                  cursor: "pointer",
-                  background: "#fafafa",
-                }}
-              >
+              <label style={{
+                display: "block",
+                padding: "20px",
+                border: "2px dashed #E5E7EB",
+                borderRadius: "12px",
+                cursor: "pointer",
+                background: "#F9FAFB",
+                transition: "all 0.25s ease"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.borderColor = '#2563EB';
+                e.currentTarget.style.background = 'rgba(37, 99, 235, 0.03)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB';
+                e.currentTarget.style.background = '#F9FAFB';
+              }}>
                 <input
                   type="file"
                   accept="image/*"
@@ -326,39 +311,45 @@ function AddDonation() {
                   hidden
                   onChange={handleImageChange}
                 />
-
-                <h6>🖼 Upload from Gallery</h6>
-
-                <small className="text-muted">
-                  Choose existing photos
+                <h6 style={{ margin: 0, marginBottom: '4px', color: '#111827', fontWeight: 600 }}>Upload from Gallery</h6>
+                <small style={{ color: '#6B7280' }}>
+                  Choose existing photos from your device
                 </small>
               </label>
 
               {images.length > 0 && (
                 <>
-                  <div className="row mt-4">
+                  <div className="row mt-4 g-2">
                     {images.map((image, index) => (
-                      <div className="col-4 mb-3" key={index}>
+                      <div className="col-4 col-sm-3" key={index}>
                         <img
                           src={URL.createObjectURL(image)}
                           alt="food"
                           className="img-fluid"
                           style={{
-                            borderRadius: "14px",
+                            borderRadius: "12px",
                             height: "120px",
                             width: "100%",
                             objectFit: "cover",
+                            boxShadow: "0 4px 12px rgba(15,23,42,0.08)"
                           }}
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-4 gap-3">
                     <button
                       type="button"
-                      className="btn btn-outline-secondary"
+                      className="btn"
                       onClick={() => setImages([])}
+                      style={{
+                        flex: 1,
+                        background: 'white',
+                        color: '#2563EB',
+                        border: '1px solid #E5E7EB',
+                        fontWeight: 600
+                      }}
                     >
                       Back
                     </button>
@@ -366,6 +357,7 @@ function AddDonation() {
                     <button
                       type="button"
                       className="btn btn-success"
+                      style={{ flex: 1 }}
                     >
                       Done ({images.length})
                     </button>
@@ -380,17 +372,20 @@ function AddDonation() {
               style={{
                 width: "100%",
                 border: "none",
-                backgroundColor: "#16a34a",
+                backgroundColor: loading ? "#9CA3AF" : "#2563EB",
                 color: "white",
-                padding: "16px",
-                borderRadius: "14px",
+                padding: "14px 20px",
+                borderRadius: "10px",
                 fontSize: "16px",
                 fontWeight: "700",
                 cursor: loading ? "not-allowed" : "pointer",
                 opacity: loading ? 0.7 : 1,
+                transition: "all 0.25s ease"
               }}
+              onMouseOver={(e) => !loading && (e.target.style.background = "#1D4ED8")}
+              onMouseOut={(e) => !loading && (e.target.style.background = "#2563EB")}
             >
-              {loading ? "Posting..." : "Post Donation"}
+              {loading ? "Posting..." : "✓ Post Donation"}
             </button>
           </form>
         </div>
