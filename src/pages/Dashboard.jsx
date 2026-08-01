@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { getDashboardStats } from "../services/dashboardService";
 
 function Dashboard() {
@@ -30,7 +31,9 @@ function Dashboard() {
   };
 
   return (
-    <div className="page-container" style={{ paddingBottom: 120 }}>
+    <>
+      <Navbar />
+      <div className="page-container" style={{ paddingBottom: 120 }}>
       {/* Header */}
       <div className="dashboard-hero">
         <h2 style={{ color: 'white', margin: '0 0 8px 0', fontSize: '32px' }}>Welcome back!</h2>
@@ -98,6 +101,7 @@ function Dashboard() {
         <span onClick={() => navigate("/profile")}>👤 Profile</span>
       </div>
     </div>
+    </>
   );
 }
 
