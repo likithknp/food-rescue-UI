@@ -7,6 +7,7 @@ import Onboarding2 from "./pages/Onboarding2";
 import Onboarding3 from "./pages/Onboarding3";
 import Dashboard from "./pages/Dashboard";
 import AddDonation from "./pages/AddDonation";
+import AddNGO from "./pages/AddNGO";
 import Donations from "./pages/Donations";
 import NGOs from "./pages/NGOs";
 import PickupRequests from "./pages/PickupRequests";
@@ -27,6 +28,7 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-donation" element={<AddDonation />} />
+        <Route path="/add-ngo" element={<AddNGO />} />
         <Route path="/donations" element={<Donations />} />
         <Route path="/ngos" element={<NGOs />} />
         <Route path="/pickups" element={<PickupRequests />} />

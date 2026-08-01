@@ -88,6 +88,7 @@ function Navbar() {
                             <Link className="nav-link" to="/add-donation">Donate Food</Link>
                             <Link className="nav-link" to="/donations">Available Food</Link>
                             <Link className="nav-link" to="/ngos">NGOs</Link>
+                            <Link className="nav-link" to="/add-ngo">Register NGO</Link>
                             <Link className="nav-link" to="/view-emergency-requests">Emergency Requests</Link>
                             <Link className="nav-link" to="/profile">Profile</Link>
                             <button
@@ -120,6 +121,7 @@ function Navbar() {
                                     <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/add-donation')}>Donate Food</button>
                                     <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/donations')}>Available Food</button>
                                     <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/ngos')}>NGOs</button>
+                                    <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/add-ngo')}>Register NGO</button>
                                     <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/view-emergency-requests')}>Emergency Requests</button>
                                     <button type="button" className="nav-link py-2" style={{color: 'white', background: 'none', border: 'none', textAlign: 'start', width: '100%', cursor: 'pointer'}} onClick={() => handleMobileNav('/profile')}>Profile</button>
                                     <div className="mt-3">
