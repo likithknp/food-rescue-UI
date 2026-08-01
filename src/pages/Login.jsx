@@ -68,9 +68,11 @@ function Login() {
       // try to extract useful message
       let msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
 
-      // Provide more helpful message for timeout errors
-      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
-        msg = "Connection timed out. The server may be slow to respond. If you just tried again, it should work now. Otherwise, please wait a moment and try again.";
+      // Provide more helpful message for timeout/server startup errors
+      if (err.message?.includes("Server is not responding")) {
+        msg = "⏳ Server is starting up (this takes 1-2 minutes). Please wait a moment and try again.";
+      } else if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        msg = "Connection timed out. Please try again — the server should be ready now.";
       } else if (err.message === 'Network Error' && !err.response) {
         msg = "Network error. Please check your internet connection or try again later.";
       }
