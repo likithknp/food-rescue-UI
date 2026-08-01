@@ -57,7 +57,7 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar navbar-dark bg-success sticky-top">
+        <nav className="navbar sticky-top">
 
             <div className="container-fluid">
 

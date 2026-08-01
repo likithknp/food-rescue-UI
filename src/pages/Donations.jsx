@@ -46,9 +46,9 @@ function Donations() {
         <>
             <Navbar />
 
-            <div className="container-fluid" style={{ padding: "15px" }}>
+            <div className="container-fluid page-container">
 
-                <h2 style={{ marginTop: "10px" }}>Available Food Donations</h2>
+                <h2>Available Food Donations</h2>
 
                 <div className="row g-3">
 
