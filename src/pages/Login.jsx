@@ -69,10 +69,8 @@ function Login() {
       let msg = err?.response?.data?.message || err?.response?.data || err.message || "Login failed";
 
       // Provide more helpful message for timeout/server startup errors
-      if (err.message?.includes("Server is not responding")) {
-        msg = "⏳ Server is starting up (this takes 1-2 minutes). Please wait a moment and try again.";
-      } else if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
-        msg = "Connection timed out. Please try again — the server should be ready now.";
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        msg = "⏳ Server is starting up. This may take 1-3 minutes. Please try again.";
       } else if (err.message === 'Network Error' && !err.response) {
         msg = "Network error. Please check your internet connection or try again later.";
       }
@@ -269,6 +267,12 @@ function Login() {
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
+
+        {loading && (
+          <div style={{ color: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.08)", marginTop: "8px", textAlign: "center", padding: "12px", borderRadius: "8px", fontSize: '13px', fontWeight: 500 }}>
+            ⏳ Server may be starting up. This can take 1-3 minutes...
+          </div>
+        )}
 
         {error && (
           <div style={{ color: "#EF4444", backgroundColor: "rgba(239, 68, 68, 0.08)", marginTop: "8px", textAlign: "center", padding: "12px", borderRadius: "8px", fontSize: '14px', fontWeight: 500 }}>
