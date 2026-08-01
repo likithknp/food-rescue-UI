@@ -29,44 +29,57 @@ function AddDonation() {
   };
 
  const useCurrentLocation = () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation is not supported");
-    return;
-  }
+   if (!navigator.geolocation) {
+     alert("Geolocation is not supported");
+     return;
+   }
 
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
+   navigator.geolocation.getCurrentPosition(
+     async (position) => {
+       const lat = position.coords.latitude;
+       const lng = position.coords.longitude;
 
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
-        );
+       try {
+         const response = await fetch(
+           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+         );
 
-        const data = await response.json();
+         const data = await response.json();
 
-        setDonation((prev) => ({
-          ...prev,
-          pickupLocation:
-            data.display_name ||
-            `${lat}, ${lng}`,
-        }));
-      } catch (error) {
-        console.error(error);
+         setDonation((prev) => ({
+           ...prev,
+           pickupLocation:
+             data.display_name ||
+             `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
+         }));
+       } catch (error) {
+         console.error(error);
 
-        setDonation((prev) => ({
-          ...prev,
-          pickupLocation: `${lat}, ${lng}`,
-        }));
-      }
-    },
-    (error) => {
-      console.error(error);
-      alert("Unable to fetch location");
-    }
-  );
-};
+         setDonation((prev) => ({
+           ...prev,
+           pickupLocation: `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
+         }));
+       }
+     },
+     (error) => {
+       console.error("Geolocation error:", error);
+       if (error.code === error.PERMISSION_DENIED) {
+         alert("Location permission denied. Please enable location access in browser settings.");
+       } else if (error.code === error.POSITION_UNAVAILABLE) {
+         alert("Location information is unavailable.");
+       } else if (error.code === error.TIMEOUT) {
+         alert("Location request timed out. Please try again.");
+       } else {
+         alert("Unable to fetch location. Please enable location access.");
+       }
+     },
+     {
+       enableHighAccuracy: true,
+       timeout: 10000,
+       maximumAge: 0
+     }
+   );
+ };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

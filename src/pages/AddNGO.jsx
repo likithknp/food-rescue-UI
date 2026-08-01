@@ -16,6 +16,7 @@ function AddNGO() {
     latitude: null,
     longitude: null,
   });
+  const [locationError, setLocationError] = useState("");
 
   const handleChange = (e) => {
     setNgo({
@@ -25,19 +26,31 @@ function AddNGO() {
   };
 
   const useCurrentLocation = () => {
+    setLocationError("");
+    
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported");
+      setLocationError("Geolocation is not supported by your browser");
       return;
     }
 
+    // Show that we're fetching
+    setLocationError("Fetching your location...");
+
+    // Set a timeout for geolocation request (15 seconds)
+    const timeoutId = setTimeout(() => {
+      setLocationError("Location request timed out. Please try again or enter address manually.");
+    }, 15000);
+
     navigator.geolocation.getCurrentPosition(
       async (position) => {
+        clearTimeout(timeoutId);
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
         try {
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`,
+            { timeout: 5000 }
           );
 
           const data = await response.json();
@@ -48,14 +61,37 @@ function AddNGO() {
             latitude: lat,
             longitude: lng,
           }));
+          setLocationError("");
         } catch (error) {
-          console.error(error);
-          setNgo((prev) => ({ ...prev, latitude: lat, longitude: lng }));
+          console.error("Address lookup error:", error);
+          // Still save coordinates even if address lookup fails
+          setNgo((prev) => ({ 
+            ...prev, 
+            latitude: lat, 
+            longitude: lng,
+            address: prev.address || `${lat.toFixed(4)}, ${lng.toFixed(4)}`
+          }));
+          setLocationError("");
         }
       },
       (error) => {
-        console.error(error);
-        alert("Unable to fetch location");
+        clearTimeout(timeoutId);
+        console.error("Geolocation error:", error);
+        
+        if (error.code === error.PERMISSION_DENIED) {
+          setLocationError("Location permission denied. Please enable location access in browser settings and try again.");
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          setLocationError("Location information is unavailable. Please try again or enter address manually.");
+        } else if (error.code === error.TIMEOUT) {
+          setLocationError("Location request timed out. Please try again.");
+        } else {
+          setLocationError("Unable to fetch location. Please enable location access in your browser settings.");
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
       }
     );
   };
@@ -77,16 +113,17 @@ function AddNGO() {
         phone: ngo.phone,
         email: ngo.email,
         address: ngo.address,
-        latitude: ngo.latitude,
-        longitude: ngo.longitude,
+        latitude: ngo.latitude || null,
+        longitude: ngo.longitude || null,
         verified: false,
       };
 
-      const response = await createNgo(ngoPayload);
+      await createNgo(ngoPayload);
 
       alert("NGO registration submitted successfully!");
 
       setNgo({ ngoName: "", contactPerson: "", phone: "", email: "", address: "", latitude: null, longitude: null });
+      setLocationError("");
 
       navigate("/ngos");
     } catch (error) {
@@ -158,6 +195,20 @@ function AddNGO() {
               }}>
                 📍 Use Current Location
               </button>
+
+              {locationError && (
+                <div style={{
+                  marginTop: "12px",
+                  padding: "10px 12px",
+                  background: "#FEE2E2",
+                  border: "1px solid #FCA5A5",
+                  borderRadius: "8px",
+                  fontSize: "13px",
+                  color: "#991B1B"
+                }}>
+                  {locationError}
+                </div>
+              )}
             </div>
 
             <button type="submit" disabled={loading} style={{

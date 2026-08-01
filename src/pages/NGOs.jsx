@@ -52,8 +52,21 @@ function NGOs() {
 
       },
       (err) => {
-        console.error(err);
-        setError("Location permission denied");
+        console.error("Geolocation error:", err);
+        if (err.code === err.PERMISSION_DENIED) {
+          setError("Location permission denied. Please enable location access in browser settings.");
+        } else if (err.code === err.POSITION_UNAVAILABLE) {
+          setError("Location information is unavailable.");
+        } else if (err.code === err.TIMEOUT) {
+          setError("Location request timed out. Please try again.");
+        } else {
+          setError("Unable to fetch location. Please enable location access in your browser.");
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
       }
     );
   };
