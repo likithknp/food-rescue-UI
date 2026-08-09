@@ -149,14 +149,14 @@ function AddDonation() {
           padding: "40px",
           boxShadow: "0 8px 24px rgba(15,23,42,0.08)",
         }}>
-          <div style={{ marginBottom: "32px" }}>
-            <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 700, color: '#111827' }}>
-              🍖 Add Food Donation
-            </h1>
-            <p style={{ margin: '8px 0 0 0', color: '#6B7280', fontSize: '15px' }}>
-              Help us reduce food waste by donating available food to those in need.
-            </p>
-          </div>
+           <div style={{ marginBottom: "32px" }}>
+             <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 700, color: '#111827' }}>
+               🍖 Donate Food
+             </h1>
+             <p style={{ margin: '8px 0 0 0', color: '#6B7280', fontSize: '15px' }}>
+               Help us reduce food waste by donating available food to those in need.
+             </p>
+           </div>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
