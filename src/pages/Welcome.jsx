@@ -12,8 +12,16 @@ function Welcome() {
                 justifyContent: "center",
                 padding: "40px 20px",
                 boxSizing: "border-box",
-                /* Removed background image per request - use a neutral light background like the Login page */
-                backgroundColor: "#F8FAFC",
+                // Use an external placeholder image (Unsplash). Replace with your own public image path if available.
+                backgroundImage: `
+  linear-gradient(
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.35)
+  ),
+  url("/food-rescue.jpeg")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 textAlign: "center"
             }}
         >
@@ -36,33 +44,23 @@ function Welcome() {
             >
                 <div
                     style={{
-                        width: "90px",
-                        height: "90px",
+                        width: "110px",
+                        height: "110px",
                         margin: "0 auto 24px",
                         borderRadius: "50%",
-                        /* allow the square image to overflow the circular badge */
-                        overflow: "visible",
-                        position: "relative",
-                        background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        boxShadow: "0 8px 24px rgba(37, 99, 235, 0.3)",
+                        overflow: "hidden",
+                        backgroundColor: "#fff",
+                        boxShadow: "0 6px 18px rgba(0,0,0,0.20)",
+                        border: "4px solid rgba(255,255,255,0.95)",
                     }}
                 >
                     <img
                         src="/food-donation.jpeg"
                         alt="Food donation"
                         style={{
-                            width: 56,
-                            height: 56,
-                            objectFit: "cover",
-                            borderRadius: 0,
-                            position: "absolute",
-                            left: "50%",
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
-                            zIndex: 2,
+                            width: "100%",
+                            height: "100%",
+                             objectFit: "cover",
                         }}
                     />
                 </div>
