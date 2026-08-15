@@ -12,7 +12,8 @@ function Welcome() {
         justifyContent: "center",
         padding: "40px 20px",
         boxSizing: "border-box",
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('/images/orphan-children.jpg')`,
+        // Use an external placeholder image (Unsplash). Replace with your own public image path if available.
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
