@@ -32,7 +32,7 @@ function Welcome() {
                     padding: "0px",
                     borderRadius: "16px",
                     // background: "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.82))",
-                    background: "rgba(255, 255, 255, 0.25)",
+                    background: "transparent",
                     backdropFilter: "blur(3px)",
                     WebkitBackdropFilter: "blur(3px)",
                     border: "none",
