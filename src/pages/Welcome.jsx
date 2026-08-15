@@ -62,10 +62,10 @@ function Welcome() {
                         src="/food-donation.jpeg"
                         alt="Food donation"
                         style={{
-                            width: 56,
-                            height: 56,
+                            width: "90px",
+                            height: "90px",
                             objectFit: "cover",
-                            borderRadius: 0,
+                            borderRadius: "50%",
                             position: "absolute",
                             left: "50%",
                             top: "50%",
