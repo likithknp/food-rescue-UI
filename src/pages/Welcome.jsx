@@ -145,6 +145,25 @@ function Welcome() {
                     >
                         Login
                     </button>
+
+                    <button
+                        onClick={() => navigate("/dashboard")}
+                        style={{
+                            padding: "12px 26px",
+                            backgroundColor: "transparent",
+                            color: "#1D4ED8",
+                            border: "2px solid #1D4ED8",
+                            borderRadius: "10px",
+                            fontSize: "16px",
+                            fontWeight: 700,
+                            cursor: "pointer",
+                            backdropFilter: "blur(4px)"
+                        }}
+                        onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
+                        onMouseOut={e => (e.target.style.background = "transparent")}
+                    >
+                        Guest Login
+                    </button>
                 </div>
 
                 <div
@@ -169,21 +188,16 @@ function Welcome() {
 
                         {/* Replace [Founder Name] with the real name of the Founder & CEO of K7iT */}
                         <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 12 }}>
-                            <div
+                            <img
+                                src="/k7it-logo.png"
+                                alt="K7iT Logo"
                                 style={{
                                     width: 48,
                                     height: 48,
                                     borderRadius: 8,
-                                    backgroundColor: "rgba(29,78,216,0.1)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontWeight: 700,
-                                    color: "#1D4ED8"
+                                    objectFit: "contain",
                                 }}
-                            >
-                                K7
-                            </div>
+                            />
                             <div style={{ textAlign: "left" }}>
                                 <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>
                                     [Founder Name]
