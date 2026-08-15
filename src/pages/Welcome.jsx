@@ -80,23 +80,40 @@ function Welcome() {
                 <p
                     style={{
                         maxWidth: "780px",
-                        margin: "0 auto 20px",
-                        lineHeight: 1.6,
+                        margin: "0 auto 16px",
+                        lineHeight: 1.5,
                         color: "#172033",
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: 500,
                         textShadow: "0 1px 4px rgba(255,255,255,0.9)",
                     }}
                 >
-                    FoodBridge is a food-rescue platform that turns surplus food into
-                    opportunity. We connect donors, restaurants, caterers, grocery stores,
-                    and individuals with NGOs, community kitchens and volunteers to ensure
-                    safe, timely redistribution of edible food to those who need it most.
+                    Transform surplus food into opportunity. Connect with NGOs, donors, and volunteers to reduce waste and feed communities.
                 </p>
 
-                <p style={{ maxWidth: "780px", margin: "8px auto 28px", lineHeight: 1.6, color: "#4b5563", fontSize: 15 }}>
-                    How it works: donors post available food items or pickups; nearby NGOs and volunteers receive notifications and coordinate safe collection and delivery. The platform tracks donation status, provides pickup logistics, and helps organizations manage inventory and requests — reducing waste and feeding communities.
-                </p>
+                <div style={{ maxWidth: "780px", margin: "0 auto 24px", textAlign: "left", paddingX: "16px" }}>
+                    <div style={{ display: "flex", gap: "12px", marginBottom: "12px" }}>
+                        <span style={{ fontSize: 20, minWidth: "24px" }}>📦</span>
+                        <div>
+                            <div style={{ fontSize: 14, fontWeight: 600, color: "#172033" }}>Post Donations</div>
+                            <div style={{ fontSize: 13, color: "#4b5563", marginTop: "2px" }}>Share available food items easily</div>
+                        </div>
+                    </div>
+                    <div style={{ display: "flex", gap: "12px", marginBottom: "12px" }}>
+                        <span style={{ fontSize: 20, minWidth: "24px" }}>📍</span>
+                        <div>
+                            <div style={{ fontSize: 14, fontWeight: 600, color: "#172033" }}>Find Nearby NGOs</div>
+                            <div style={{ fontSize: 13, color: "#4b5563", marginTop: "2px" }}>Instant notifications to volunteers</div>
+                        </div>
+                    </div>
+                    <div style={{ display: "flex", gap: "12px" }}>
+                        <span style={{ fontSize: 20, minWidth: "24px" }}>✅</span>
+                        <div>
+                            <div style={{ fontSize: 14, fontWeight: 600, color: "#172033" }}>Track & Deliver</div>
+                            <div style={{ fontSize: 13, color: "#4b5563", marginTop: "2px" }}>Real-time status & delivery logistics</div>
+                        </div>
+                    </div>
+                </div>
 
                 <div
                     style={{
@@ -111,18 +128,18 @@ function Welcome() {
                     <button
                         onClick={() => navigate("/dashboard")}
                         style={{
-                            padding: "12px 26px",
-                            backgroundColor: "transparent",
-                            color: "#1D4ED8",
-                            border: "2px solid #1D4ED8",
+                            padding: "12px 28px",
+                            backgroundColor: "#1D4ED8",
+                            color: "white",
+                            border: "none",
                             borderRadius: "10px",
                             fontSize: "16px",
                             fontWeight: 700,
                             cursor: "pointer",
-                            backdropFilter: "blur(4px)"
+                            boxShadow: "0 8px 20px rgba(29,78,216,0.25)"
                         }}
-                        onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
-                        onMouseOut={e => (e.target.style.background = "transparent")}
+                        onMouseOver={e => (e.target.style.background = "#1747b9")}
+                        onMouseOut={e => (e.target.style.background = "#1D4ED8")}
                     >
                         Continue as Guest
                     </button>
@@ -149,18 +166,18 @@ function Welcome() {
                     <button
                         onClick={() => navigate("/login")}
                         style={{
-                            padding: "12px 26px",
-                            backgroundColor: "transparent",
-                            color: "#1D4ED8",
-                            border: "2px solid #1D4ED8",
+                            padding: "12px 28px",
+                            backgroundColor: "#1D4ED8",
+                            color: "white",
+                            border: "none",
                             borderRadius: "10px",
                             fontSize: "16px",
                             fontWeight: 700,
                             cursor: "pointer",
-                            backdropFilter: "blur(4px)"
+                            boxShadow: "0 8px 20px rgba(29,78,216,0.25)"
                         }}
-                        onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
-                        onMouseOut={e => (e.target.style.background = "transparent")}
+                        onMouseOver={e => (e.target.style.background = "#1747b9")}
+                        onMouseOut={e => (e.target.style.background = "#1D4ED8")}
                     >
                         Login
                     </button>
@@ -168,50 +185,31 @@ function Welcome() {
 
                 <div
                     style={{
-                        marginTop: "8px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "14px",
-                        flexWrap: "wrap"
+                        marginTop: "16px",
+                        paddingTop: "16px",
+                        borderTop: "1px solid rgba(0,0,0,0.1)",
+                        textAlign: "center"
                     }}
                 >
-                    <div style={{ textAlign: "left", minWidth: 260 }}>
-                        <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>About this platform</div>
-                        <div style={{ fontSize: 13, color: "#4b5563", marginTop: 6 }}>
-                            FoodBridge provides easy donor onboarding, donation scheduling, pickup logistics, and audit-ready donation records to help NGOs and donors work together efficiently.
-                        </div>
+                    <div style={{ fontSize: 12, color: "#6b7280", marginBottom: "8px" }}>
+                        Join the FoodBridge community today
                     </div>
-
-                    <div style={{ minWidth: 260 }}>
-                        <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>Founder</div>
-
-                        {/* Replace [Founder Name] with the real name of the Founder & CEO of K7iT */}
-                        <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 12 }}>
-                            <img
-                                src="/K7iT.jpeg"
-                                alt="K7iT Logo"
-                                style={{
-                                    width: 48,
-                                    height: 48,
-                                    borderRadius: 8,
-                                    objectFit: "cover",
-                                    objectPosition: "center",
-                                }}
-                            />
-                            <div style={{ textAlign: "left" }}>
-                                <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>
-                                    Kesavulu Arthala
-                                </div>
-                                <div style={{ fontSize: 13, color: "#6b7280" }}>Founder & CEO, K7iT</div>
-                            </div>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", flexWrap: "wrap" }}>
+                        <img
+                            src="/K7iT.jpeg"
+                            alt="K7iT Logo"
+                            style={{
+                                width: 32,
+                                height: 32,
+                                borderRadius: 6,
+                                objectFit: "cover",
+                            }}
+                        />
+                        <div style={{ fontSize: 12, color: "#4b5563" }}>
+                            Built by <span style={{ fontWeight: 600, color: "#111827" }}>K7iT</span>
                         </div>
                     </div>
                 </div>
-
-                <p style={{ marginTop: 20, color: "#9ca3af", fontSize: 12 }}>
-                    Note: Replace the placeholder founder name with the correct full name and a short bio if desired. If you use a real photo of children for the background, ensure permissions and privacy requirements are met; consider an illustration for safety.
-                </p>
             </div>
         </div>
     );
