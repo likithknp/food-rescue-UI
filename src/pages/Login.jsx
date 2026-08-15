@@ -96,23 +96,26 @@ function Login() {
       }}
     >
       {/* Brand Circle */}
-      <div
-        style={{
-          width: "90px",
-          height: "90px",
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "24px",
-          boxShadow: "0 8px 24px rgba(37, 99, 235, 0.3)"
-        }}
+        <div
+            style={{
+                width: "100px",
+                height: "100px",
+                marginBottom: "24px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
       >
-        <img
-          src="/food-donation.jpeg"
-          alt="Food donation"
-          style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 999 }}
+            <img
+                src="/food-donation.jpeg"
+                alt="Food donation"
+                style={{
+                    width: "90px",
+                    height: "90px",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                    display: "block",
+                }}
         />
       </div>
 
