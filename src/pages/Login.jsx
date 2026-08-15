@@ -109,15 +109,20 @@ function Login() {
           boxShadow: "0 8px 24px rgba(37, 99, 235, 0.3)"
         }}
       >
-        <span style={{ fontSize: '40px', fontWeight: 'bold' }}>🍽️</span>
+        <img
+          src="/food-donation.png"
+          alt="Food donation"
+          style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 999 }}
+        />
       </div>
 
       {/* Title */}
       <h1 style={{ fontSize: "32px", fontWeight: "700", margin: "0 0 8px 0", color: "#111827" }}>
-        Welcome Back
+        Welcome to FoodBridge
       </h1>
       <p style={{ fontSize: "15px", color: "#6B7280", marginBottom: "40px", fontWeight: 400 }}>
-        Login to your FoodBridge account to continue reducing food waste
+        Sign in to connect with food donors, NGOs, and volunteers
+        working together to reduce food waste.
       </p>
 
       {/* Form */}
