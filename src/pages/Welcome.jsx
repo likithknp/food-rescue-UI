@@ -48,7 +48,9 @@ function Welcome() {
                         height: "90px",
                         margin: "0 auto 24px",
                         borderRadius: "50%",
-                        overflow: "hidden",
+                        /* allow the square image to overflow the circular badge */
+                        overflow: "visible",
+                        position: "relative",
                         background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                         display: "flex",
                         justifyContent: "center",
@@ -63,7 +65,12 @@ function Welcome() {
                             width: 56,
                             height: 56,
                             objectFit: "cover",
-                            borderRadius: 999,
+                            borderRadius: 0,
+                            position: "absolute",
+                            left: "50%",
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                            zIndex: 2,
                         }}
                     />
                 </div>
