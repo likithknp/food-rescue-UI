@@ -35,7 +35,7 @@ function Welcome() {
                     background: "transparent",
                     backdropFilter: "blur(3px)",
                     WebkitBackdropFilter: "blur(3px)",
-                    border: "none",
+                    border: "0",
 
                     boxShadow: "0 8px 40px rgba(0, 0, 0, 0.12)",
 
