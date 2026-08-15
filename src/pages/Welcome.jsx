@@ -12,16 +12,8 @@ function Welcome() {
                 justifyContent: "center",
                 padding: "40px 20px",
                 boxSizing: "border-box",
-                // Use an external placeholder image (Unsplash). Replace with your own public image path if available.
-                backgroundImage: `
-  linear-gradient(
-    rgba(255, 255, 255, 0.35),
-    rgba(255, 255, 255, 0.35)
-  ),
-  url("/food-rescue.jpeg")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+                /* Removed background image per request - use a neutral light background like the Login page */
+                backgroundColor: "#F8FAFC",
                 textAlign: "center"
             }}
         >
