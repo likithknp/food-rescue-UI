@@ -18,7 +18,7 @@ function Welcome() {
     rgba(255, 255, 255, 0.35),
     rgba(255, 255, 255, 0.35)
   ),
-  url("/food-rescue.png")`,
+  url("/food-rescue.jpeg")`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
