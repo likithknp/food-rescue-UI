@@ -109,6 +109,25 @@ function Welcome() {
                     }}
                 >
                     <button
+                        onClick={() => navigate("/dashboard")}
+                        style={{
+                            padding: "12px 26px",
+                            backgroundColor: "transparent",
+                            color: "#1D4ED8",
+                            border: "2px solid #1D4ED8",
+                            borderRadius: "10px",
+                            fontSize: "16px",
+                            fontWeight: 700,
+                            cursor: "pointer",
+                            backdropFilter: "blur(4px)"
+                        }}
+                        onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
+                        onMouseOut={e => (e.target.style.background = "transparent")}
+                    >
+                        Continue as Guest
+                    </button>
+
+                    <button
                         onClick={() => navigate("/register")}
                         style={{
                             padding: "12px 28px",
@@ -144,25 +163,6 @@ function Welcome() {
                         onMouseOut={e => (e.target.style.background = "transparent")}
                     >
                         Login
-                    </button>
-
-                    <button
-                        onClick={() => navigate("/dashboard")}
-                        style={{
-                            padding: "12px 26px",
-                            backgroundColor: "transparent",
-                            color: "#1D4ED8",
-                            border: "2px solid #1D4ED8",
-                            borderRadius: "10px",
-                            fontSize: "16px",
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            backdropFilter: "blur(4px)"
-                        }}
-                        onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
-                        onMouseOut={e => (e.target.style.background = "transparent")}
-                    >
-                        Guest Login
                     </button>
                 </div>
 
@@ -201,7 +201,7 @@ function Welcome() {
                             />
                             <div style={{ textAlign: "left" }}>
                                 <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>
-                                    [Founder Name]
+                                    Kesavulu Arthala
                                 </div>
                                 <div style={{ fontSize: 13, color: "#6b7280" }}>Founder & CEO, K7iT</div>
                             </div>
