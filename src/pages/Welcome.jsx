@@ -189,7 +189,7 @@ function Welcome() {
                         {/* Replace [Founder Name] with the real name of the Founder & CEO of K7iT */}
                         <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 12 }}>
                             <img
-                                src="/k7it-logo.png"
+                                src="/K7iT.jpeg"
                                 alt="K7iT Logo"
                                 style={{
                                     width: 48,
