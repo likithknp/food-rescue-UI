@@ -29,7 +29,7 @@ function Welcome() {
                 style={{
                     maxWidth: "920px",
                     width: "100%",
-                    padding: "48px",
+                    padding: "0px",
                     borderRadius: "16px",
                     // background: "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.82))",
                     background: "rgba(255, 255, 255, 0.25)",
@@ -198,4 +198,3 @@ function Welcome() {
 }
 
 export default Welcome
-
