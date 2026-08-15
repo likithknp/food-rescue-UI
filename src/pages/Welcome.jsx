@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 function Welcome() {
   const navigate = useNavigate();
 
-  // If you place the image in public/images/orphan-children.jpg use: backgroundUrl = '/images/orphan-children.jpg'
-  const backgroundUrl = "/images/orphan-children.jpg";
-
   return (
     <div
       style={{
@@ -15,11 +12,10 @@ function Welcome() {
         justifyContent: "center",
         padding: "40px 20px",
         boxSizing: "border-box",
-        backgroundImage: `linear-gradient(rgba(8, 23, 36, 0.45), rgba(8, 23, 36, 0.45)), url('${backgroundUrl}')`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('/images/orphan-children.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        color: "#fff",
         textAlign: "center"
       }}
     >
@@ -29,10 +25,10 @@ function Welcome() {
           width: "100%",
           padding: "48px",
           borderRadius: "16px",
-          background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
+          background: "linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8))",
           backdropFilter: "blur(6px)",
-          boxShadow: "0 8px 40px rgba(2,6,23,0.6)",
-          color: "white"
+          boxShadow: "0 8px 40px rgba(2,6,23,0.15)",
+          color: "#1a1a1a"
         }}
       >
         <div
@@ -41,27 +37,27 @@ function Welcome() {
             height: "96px",
             margin: "0 auto 24px",
             borderRadius: "50%",
-            backgroundColor: "rgba(255,255,255,0.12)",
+            backgroundColor: "rgba(29,78,216,0.1)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: "44px",
-            boxShadow: "0 6px 18px rgba(0,0,0,0.4)"
+            boxShadow: "0 6px 18px rgba(0,0,0,0.1)"
           }}
           aria-hidden
         >
           🍽️
         </div>
 
-        <h1 style={{ fontSize: "36px", margin: "0 0 12px", fontWeight: 800, color: "#FFF" }}>
+        <h1 style={{ fontSize: "36px", margin: "0 0 12px", fontWeight: 800, color: "#111827" }}>
           Welcome to FoodBridge
         </h1>
 
-        <p style={{ maxWidth: "780px", margin: "0 auto 20px", lineHeight: 1.6, color: "rgba(255,255,255,0.92)", fontSize: 16 }}>
+        <p style={{ maxWidth: "780px", margin: "0 auto 20px", lineHeight: 1.6, color: "#374151", fontSize: 16 }}>
           FoodBridge is a food-rescue platform that turns surplus food into opportunity. We connect donors (restaurants, caterers, grocery stores, and individuals) with NGOs, community kitchens and volunteers to ensure safe, timely redistribution of edible food to those who need it most.
         </p>
 
-        <p style={{ maxWidth: "780px", margin: "8px auto 28px", lineHeight: 1.6, color: "rgba(255,255,255,0.85)", fontSize: 15 }}>
+        <p style={{ maxWidth: "780px", margin: "8px auto 28px", lineHeight: 1.6, color: "#4b5563", fontSize: 15 }}>
           How it works: donors post available food items or pickups; nearby NGOs and volunteers receive notifications and coordinate safe collection and delivery. The platform tracks donation status, provides pickup logistics, and helps organizations manage inventory and requests — reducing waste and feeding communities.
         </p>
 
@@ -99,15 +95,15 @@ function Welcome() {
             style={{
               padding: "12px 26px",
               backgroundColor: "transparent",
-              color: "white",
-              border: "2px solid rgba(255,255,255,0.18)",
+              color: "#1D4ED8",
+              border: "2px solid #1D4ED8",
               borderRadius: "10px",
               fontSize: "16px",
               fontWeight: 700,
               cursor: "pointer",
               backdropFilter: "blur(4px)"
             }}
-            onMouseOver={e => (e.target.style.background = "rgba(255,255,255,0.04)")}
+            onMouseOver={e => (e.target.style.background = "rgba(29,78,216,0.08)")}
             onMouseOut={e => (e.target.style.background = "transparent")}
           >
             Login
@@ -125,14 +121,14 @@ function Welcome() {
           }}
         >
           <div style={{ textAlign: "left", minWidth: 260 }}>
-            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>About this platform</div>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.78)", marginTop: 6 }}>
+            <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>About this platform</div>
+            <div style={{ fontSize: 13, color: "#4b5563", marginTop: 6 }}>
               FoodBridge provides easy donor onboarding, donation scheduling, pickup logistics, and audit-ready donation records to help NGOs and donors work together efficiently.
             </div>
           </div>
 
           <div style={{ minWidth: 260 }}>
-            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>Founder</div>
+            <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>Founder</div>
 
             {/* Replace [Founder Name] with the real name of the Founder & CEO of K7iT */}
             <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 12 }}>
@@ -141,26 +137,27 @@ function Welcome() {
                   width: 48,
                   height: 48,
                   borderRadius: 8,
-                  backgroundColor: "rgba(255,255,255,0.10)",
+                  backgroundColor: "rgba(29,78,216,0.1)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontWeight: 700
+                  fontWeight: 700,
+                  color: "#1D4ED8"
                 }}
               >
                 K7
               </div>
               <div style={{ textAlign: "left" }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "white" }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>
                   [Founder Name]
                 </div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.78)" }}>Founder & CEO, K7iT</div>
+                <div style={{ fontSize: 13, color: "#6b7280" }}>Founder & CEO, K7iT</div>
               </div>
             </div>
           </div>
         </div>
 
-        <p style={{ marginTop: 20, color: "rgba(255,255,255,0.65)", fontSize: 12 }}>
+        <p style={{ marginTop: 20, color: "#9ca3af", fontSize: 12 }}>
           Note: Replace the placeholder founder name with the correct full name and a short bio if desired. If you use a real photo of children for the background, ensure permissions and privacy requirements are met; consider an illustration for safety.
         </p>
       </div>
