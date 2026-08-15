@@ -31,10 +31,15 @@ function Welcome() {
                     width: "100%",
                     padding: "48px",
                     borderRadius: "16px",
-                    background: "linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8))",
-                    backdropFilter: "blur(6px)",
-                    boxShadow: "0 8px 40px rgba(2,6,23,0.15)",
-                    color: "#1a1a1a"
+                    // background: "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.82))",
+                    background: "rgba(255, 255, 255, 0.25)",
+                    backdropFilter: "blur(3px)",
+                    WebkitBackdropFilter: "blur(3px)",
+                    border: "1px solid rgba(255, 255, 255, 0.45)",
+
+                    boxShadow: "0 8px 40px rgba(0, 0, 0, 0.12)",
+
+                    color: "#111827",
                 }}
             >
                 <div
@@ -55,12 +60,33 @@ function Welcome() {
                     🍽️
                 </div>
 
-                <h1 style={{ fontSize: "36px", margin: "0 0 12px", fontWeight: 800, color: "#111827" }}>
+                <h1
+                    style={{
+                        fontSize: "36px",
+                        margin: "0 0 12px",
+                        fontWeight: 800,
+                        color: "#111827",
+                        textShadow: "0 2px 5px rgba(255,255,255,0.9)",
+                    }}
+                >
                     Welcome to FoodBridge
                 </h1>
 
-                <p style={{ maxWidth: "780px", margin: "0 auto 20px", lineHeight: 1.6, color: "#374151", fontSize: 16 }}>
-                    FoodBridge is a food-rescue platform that turns surplus food into opportunity. We connect donors (restaurants, caterers, grocery stores, and individuals) with NGOs, community kitchens and volunteers to ensure safe, timely redistribution of edible food to those who need it most.
+                <p
+                    style={{
+                        maxWidth: "780px",
+                        margin: "0 auto 20px",
+                        lineHeight: 1.6,
+                        color: "#172033",
+                        fontSize: 16,
+                        fontWeight: 500,
+                        textShadow: "0 1px 4px rgba(255,255,255,0.9)",
+                    }}
+                >
+                    FoodBridge is a food-rescue platform that turns surplus food into
+                    opportunity. We connect donors, restaurants, caterers, grocery stores,
+                    and individuals with NGOs, community kitchens and volunteers to ensure
+                    safe, timely redistribution of edible food to those who need it most.
                 </p>
 
                 <p style={{ maxWidth: "780px", margin: "8px auto 28px", lineHeight: 1.6, color: "#4b5563", fontSize: 15 }}>
