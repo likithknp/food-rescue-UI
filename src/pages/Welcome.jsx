@@ -44,23 +44,32 @@ function Welcome() {
             >
                 <div
                     style={{
-                        width: "110px",
-                        height: "110px",
+                        width: "90px",
+                        height: "90px",
                         margin: "0 auto 24px",
                         borderRadius: "50%",
-                        overflow: "hidden",
-                        backgroundColor: "#fff",
-                        boxShadow: "0 6px 18px rgba(0,0,0,0.20)",
-                        border: "4px solid rgba(255,255,255,0.95)",
+                        /* make wrapper visually transparent and remove shadow */
+                        overflow: "visible",
+                        position: "relative",
+                        background: "transparent",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        boxShadow: "none",
                     }}
                 >
                     <img
                         src="/food-donation.jpeg"
                         alt="Food donation"
                         style={{
-                            width: "100%",
-                            height: "100%",
-                             objectFit: "cover",
+                            width: 56,
+                            height: 56,
+                            objectFit: "cover",
+                            borderRadius: 0,
+                            position: "absolute",
+                            left: "50%",
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
                         }}
                     />
                 </div>
