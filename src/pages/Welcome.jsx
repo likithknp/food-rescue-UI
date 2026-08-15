@@ -44,20 +44,25 @@ function Welcome() {
             >
                 <div
                     style={{
-                        width: "96px",
-                        height: "96px",
+                        width: "110px",
+                        height: "110px",
                         margin: "0 auto 24px",
                         borderRadius: "50%",
-                        backgroundColor: "rgba(29,78,216,0.1)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "44px",
-                        boxShadow: "0 6px 18px rgba(0,0,0,0.1)"
+                        overflow: "hidden",
+                        backgroundColor: "#fff",
+                        boxShadow: "0 6px 18px rgba(0,0,0,0.20)",
+                        border: "4px solid rgba(255,255,255,0.95)",
                     }}
-                    aria-hidden
                 >
-                    🍽️
+                    <img
+                        src="/food-donation.png"
+                        alt="Food donation"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
                 </div>
 
                 <h1
