@@ -55,7 +55,7 @@ function Welcome() {
                     }}
                 >
                     <img
-                        src="/food-donation.png"
+                        src="/food-donation.jpeg"
                         alt="Food donation"
                         style={{
                             width: "100%",

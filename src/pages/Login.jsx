@@ -110,7 +110,7 @@ function Login() {
         }}
       >
         <img
-          src="/food-donation.png"
+          src="/food-donation.jpeg"
           alt="Food donation"
           style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 999 }}
         />
