@@ -195,7 +195,8 @@ function Welcome() {
                                     width: 48,
                                     height: 48,
                                     borderRadius: 8,
-                                    objectFit: "contain",
+                                    objectFit: "cover",
+                                    objectPosition: "center",
                                 }}
                             />
                             <div style={{ textAlign: "left" }}>
