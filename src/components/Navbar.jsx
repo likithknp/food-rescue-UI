@@ -59,8 +59,8 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-md sticky-top">
             <div className="container-fluid" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-                <Link className="navbar-brand fw-bold no-underline" to="/" style={{ fontSize: '18px', letterSpacing: '-0.3px' }}>
-                    🍽️ Aahar Setu
+                <Link className="navbar-brand fw-bold no-underline" to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <img src="/aahar-setu-logo.svg" alt="Aahar Setu" style={{ height: '45px', width: 'auto' }} />
                 </Link>
 
                 {/* Mobile: offcanvas toggle */}
