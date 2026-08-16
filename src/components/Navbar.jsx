@@ -60,7 +60,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-md sticky-top">
             <div className="container-fluid" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
                 <Link className="navbar-brand fw-bold no-underline" to="/" style={{ fontSize: '18px', letterSpacing: '-0.3px' }}>
-                    🍽️ FoodBridge
+                    🍽️ Aahar Setu
                 </Link>
 
                 {/* Mobile: offcanvas toggle */}
@@ -105,7 +105,7 @@ function Navbar() {
                 {/* Offcanvas mobile menu (shows on small screens) */}
                 <div className={`offcanvas offcanvas-end text-bg-success ${isOffcanvasOpen ? 'show' : ''}`} tabIndex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style={{ visibility: isOffcanvasOpen ? 'visible' : 'hidden', display: isOffcanvasOpen ? 'block' : 'none' }}>
                     <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="mobileMenuLabel" style={{ color: 'white', fontWeight: 700 }}>FoodBridge</h5>
+                        <h5 className="offcanvas-title" id="mobileMenuLabel" style={{ color: 'white', fontWeight: 700 }}>Aahar Setu</h5>
                         <button type="button" className="btn-close btn-close-white" onClick={() => setIsOffcanvasOpen(false)} aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body">

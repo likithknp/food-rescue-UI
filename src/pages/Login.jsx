@@ -121,7 +121,7 @@ function Login() {
 
       {/* Title */}
       <h1 style={{ fontSize: "32px", fontWeight: "700", margin: "0 0 8px 0", color: "#111827" }}>
-        Welcome to FoodBridge
+        Welcome to Aahar Setu
       </h1>
       <p style={{ fontSize: "15px", color: "#6B7280", marginBottom: "40px", fontWeight: 400 }}>
         Sign in to connect with food donors, NGOs, and volunteers

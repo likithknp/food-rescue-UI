@@ -50,7 +50,7 @@ function Profile() {
               marginTop: "0",
               fontSize: "15px"
             }}>
-              Welcome to FoodBridge - Reducing Food Waste Together
+              Welcome to Aahar Setu - Reducing Food Waste Together
             </p>
           </div>
 

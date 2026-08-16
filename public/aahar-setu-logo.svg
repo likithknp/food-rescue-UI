@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left hand (orange/peach) -->
+  <path d="M 280 450 Q 250 420 280 380 L 320 340 Q 340 320 360 330 L 420 380 Q 430 400 400 420 Q 370 440 340 450 Z" fill="#D4A574" stroke="#8B6F47" stroke-width="2"/>
+
+  <!-- Right hand (brown) -->
+  <path d="M 720 450 Q 750 420 720 380 L 680 340 Q 660 320 640 330 L 580 380 Q 570 400 600 420 Q 630 440 660 450 Z" fill="#8B6F47" stroke="#5C4033" stroke-width="2"/>
+
+  <!-- Food bowl -->
+  <ellipse cx="500" cy="380" rx="120" ry="40" fill="#F5E6D3" stroke="#2D5016" stroke-width="3"/>
+  <path d="M 380 380 Q 380 420 500 450 Q 620 420 620 380" fill="#FFFFFF" stroke="#2D5016" stroke-width="3"/>
+
+  <!-- Rice in bowl -->
+  <circle cx="480" cy="390" r="4" fill="#F5DEB3"/>
+  <circle cx="520" cy="395" r="4" fill="#F5DEB3"/>
+  <circle cx="500" cy="410" r="4" fill="#F5DEB3"/>
+
+  <!-- Vegetables -->
+  <circle cx="450" cy="380" r="8" fill="#FFA500"/> <!-- Orange -->
+  <circle cx="550" cy="385" r="7" fill="#90EE90"/> <!-- Green vegetable -->
+  <circle cx="510" cy="370" r="6" fill="#FFD700"/> <!-- Yellow -->
+
+  <!-- Steam waves -->
+  <path d="M 470 340 Q 460 320 480 310" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 530 340 Q 520 320 540 310" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 500 335 Q 495 315 515 305" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Left leaves (green) -->
+  <ellipse cx="300" cy="250" rx="30" ry="60" fill="#2D5016" transform="rotate(-45 300 250)"/>
+  <ellipse cx="240" cy="280" rx="25" ry="50" fill="#4CAF50" transform="rotate(-20 240 280)"/>
+
+  <!-- Right leaves (green) -->
+  <ellipse cx="700" cy="250" rx="30" ry="60" fill="#2D5016" transform="rotate(45 700 250)"/>
+  <ellipse cx="760" cy="280" rx="25" ry="50" fill="#4CAF50" transform="rotate(20 760 280)"/>
+
+  <!-- Circular connecting element -->
+  <circle cx="500" cy="300" r="150" fill="none" stroke="#2D5016" stroke-width="8" opacity="0.5"/>
+  <circle cx="500" cy="300" r="130" fill="none" stroke="#4CAF50" stroke-width="6" opacity="0.3"/>
+
+  <!-- Top people circle outlines -->
+  <circle cx="420" cy="180" r="20" fill="#2D5016"/>
+  <circle cx="580" cy="180" r="20" fill="#FFA500"/>
+
+  <!-- Text: Aahar Setu (will be styled separately) -->
+  <!-- Left side text in Hindi script style -->
+  <text x="500" y="580" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="#2D5016">Aahar</text>
+  <text x="500" y="670" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="#FFA500">Setu</text>
+
+  <!-- Tagline -->
+  <text x="500" y="730" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2D5016" font-weight="500">SHARE • FEED • CARE</text>
+</svg>

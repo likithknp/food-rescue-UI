@@ -83,7 +83,7 @@ function Welcome() {
                         textShadow: "0 2px 5px rgba(255,255,255,0.9)",
                     }}
                 >
-                    Welcome to FoodBridge
+                    Welcome to Aahar Setu
                 </h1>
 
                 <p
@@ -97,7 +97,7 @@ function Welcome() {
                         textShadow: "0 1px 4px rgba(255,255,255,0.9)",
                     }}
                 >
-                    FoodBridge is a food-rescue platform that turns surplus food into
+                    Aahar Setu is a food-rescue platform that turns surplus food into
                     opportunity. We connect donors, restaurants, caterers, grocery stores,
                     and individuals with NGOs, community kitchens and volunteers to ensure
                     safe, timely redistribution of edible food to those who need it most.
@@ -188,7 +188,7 @@ function Welcome() {
                     <div style={{ textAlign: "left", minWidth: 260 }}>
                         <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>About this platform</div>
                         <div style={{ fontSize: 13, color: "#4b5563", marginTop: 6 }}>
-                            FoodBridge provides easy donor onboarding, donation scheduling, pickup logistics, and audit-ready donation records to help NGOs and donors work together efficiently.
+                            Aahar Setu provides easy donor onboarding, donation scheduling, pickup logistics, and audit-ready donation records to help NGOs and donors work together efficiently.
                         </div>
                     </div>
 

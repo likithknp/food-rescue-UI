@@ -82,7 +82,7 @@ function Register() {
 
             {/* Title */}
             <h1 style={{ fontSize: "32px", fontWeight: "700", margin: "0 0 8px 0", color: "#111827", textAlign: 'center' }}>
-                Join FoodBridge
+                Join Aahar Setu
             </h1>
             <p style={{ fontSize: "15px", color: "#6B7280", marginBottom: "40px", fontWeight: 400, textAlign: 'center', maxWidth: '400px' }}>
                 Create an account and start reducing food waste while helping your community
