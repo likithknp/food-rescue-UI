@@ -8,54 +8,42 @@ function Welcome() {
             style={{
                 minHeight: "100vh",
                 display: "flex",
-                alignItems: "center",
+                flexDirection: "column",
                 justifyContent: "center",
+                alignItems: "center",
                 padding: "40px 20px",
                 boxSizing: "border-box",
-                // Use an external placeholder image (Unsplash). Replace with your own public image path if available.
-                backgroundImage: `
-  linear-gradient(
-    rgba(255, 255, 255, 0.35),
-    rgba(255, 255, 255, 0.35)
-  ),
-  url("/food-rescue.jpeg")`,
+
+                // Same background style as Login page
+                backgroundImage:
+                    'linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("/food-rescue.jpeg")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                textAlign: "center"
             }}
         >
+
+            {/* Main Welcome Content */}
             <div
                 style={{
-                    maxWidth: "920px",
                     width: "100%",
-                    padding: "0px",
-                    borderRadius: "16px",
-                    // background: "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.82))",
-                    background: "transparent",
-                    backdropFilter: "blur(3px)",
-                    WebkitBackdropFilter: "blur(3px)",
-                    border: "0",
-
-                    boxShadow: "0 8px 40px rgba(0, 0, 0, 0.12)",
-
-                    color: "#111827",
+                    maxWidth: "920px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
                 }}
             >
+
+                {/* Food Donation Image */}
                 <div
                     style={{
-                        width: "90px",
-                        height: "90px",
-                        margin: "0 auto 24px",
-                        borderRadius: "50%",
-                        /* make wrapper visually transparent and remove shadow */
-                        overflow: "visible",
-                        position: "relative",
-                        background: "transparent",
+                        width: "100px",
+                        height: "100px",
+                        marginBottom: "24px",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        boxShadow: "none",
                     }}
                 >
                     <img
@@ -66,164 +54,299 @@ function Welcome() {
                             height: "90px",
                             objectFit: "cover",
                             borderRadius: "50%",
-                            position: "absolute",
-                            left: "50%",
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
+                            display: "block",
                         }}
                     />
                 </div>
 
+                {/* Welcome Heading */}
                 <h1
                     style={{
-                        fontSize: "36px",
-                        margin: "0 0 12px",
-                        fontWeight: 800,
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        margin: "0 0 8px 0",
                         color: "#111827",
+                        textAlign: "center",
                         textShadow: "0 2px 5px rgba(255,255,255,0.9)",
                     }}
                 >
-                    Welcome to Aahar Setu
+                    Welcome to FoodBridge
                 </h1>
 
+                {/* Introduction */}
                 <p
                     style={{
                         maxWidth: "780px",
                         margin: "0 auto 20px",
                         lineHeight: 1.6,
                         color: "#172033",
-                        fontSize: 16,
+                        fontSize: "16px",
                         fontWeight: 500,
+                        textAlign: "center",
                         textShadow: "0 1px 4px rgba(255,255,255,0.9)",
                     }}
                 >
-                    Aahar Setu is a food-rescue platform that turns surplus food into
-                    opportunity. We connect donors, restaurants, caterers, grocery stores,
-                    and individuals with NGOs, community kitchens and volunteers to ensure
-                    safe, timely redistribution of edible food to those who need it most.
+                    FoodBridge is a food-rescue platform that turns surplus food
+                    into opportunity. We connect donors, restaurants, caterers,
+                    grocery stores, and individuals with NGOs, community kitchens,
+                    and volunteers to ensure safe and timely redistribution of
+                    edible food to those who need it most.
                 </p>
 
-                <p style={{ maxWidth: "780px", margin: "8px auto 28px", lineHeight: 1.6, color: "#4b5563", fontSize: 15 }}>
-                    How it works: donors post available food items or pickups; nearby NGOs and volunteers receive notifications and coordinate safe collection and delivery. The platform tracks donation status, provides pickup logistics, and helps organizations manage inventory and requests — reducing waste and feeding communities.
+                {/* How FoodBridge Works */}
+                <p
+                    style={{
+                        maxWidth: "780px",
+                        margin: "8px auto 28px",
+                        lineHeight: 1.6,
+                        color: "#4B5563",
+                        fontSize: "15px",
+                        fontWeight: 400,
+                        textAlign: "center",
+                        textShadow: "0 1px 3px rgba(255,255,255,0.8)",
+                    }}
+                >
+                    How it works: donors post available food items or pickups;
+                    nearby NGOs and volunteers receive notifications and
+                    coordinate safe collection and delivery. FoodBridge helps
+                    track donations, manage pickup logistics, and maintain
+                    donation records — reducing food waste and helping feed
+                    communities.
                 </p>
 
+                {/* Action Buttons */}
                 <div
                     style={{
+                        width: "100%",
                         display: "flex",
                         flexDirection: "row",
                         gap: "12px",
                         justifyContent: "center",
-                        marginBottom: "26px",
-                        flexWrap: "wrap"
+                        alignItems: "center",
+                        marginBottom: "30px",
+                        flexWrap: "wrap",
                     }}
                 >
+
+                    {/* Continue as Guest */}
                     <button
                         onClick={() => navigate("/dashboard")}
                         style={{
                             padding: "12px 28px",
-                            backgroundColor: "#1D4ED8",
+                            backgroundColor: "#2563EB",
                             color: "white",
                             border: "none",
                             borderRadius: "10px",
                             fontSize: "16px",
-                            fontWeight: 700,
+                            fontWeight: 600,
                             cursor: "pointer",
-                            boxShadow: "0 8px 20px rgba(29,78,216,0.25)"
+                            minWidth: "170px",
+                            height: "48px",
+                            transition: "all 0.25s ease",
+                            boxShadow:
+                                "0 4px 12px rgba(37, 99, 235, 0.2)",
                         }}
-                        onMouseOver={e => (e.target.style.background = "#1747b9")}
-                        onMouseOut={e => (e.target.style.background = "#1D4ED8")}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.background = "#1D4ED8";
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.background = "#2563EB";
+                        }}
                     >
                         Continue as Guest
                     </button>
 
+                    {/* Create Account */}
                     <button
                         onClick={() => navigate("/register")}
                         style={{
                             padding: "12px 28px",
-                            backgroundColor: "#1D4ED8",
+                            backgroundColor: "#2563EB",
                             color: "white",
                             border: "none",
                             borderRadius: "10px",
                             fontSize: "16px",
-                            fontWeight: 700,
+                            fontWeight: 600,
                             cursor: "pointer",
-                            boxShadow: "0 8px 20px rgba(29,78,216,0.25)"
+                            minWidth: "170px",
+                            height: "48px",
+                            transition: "all 0.25s ease",
+                            boxShadow:
+                                "0 4px 12px rgba(37, 99, 235, 0.2)",
                         }}
-                        onMouseOver={e => (e.target.style.background = "#1747b9")}
-                        onMouseOut={e => (e.target.style.background = "#1D4ED8")}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.background = "#1D4ED8";
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.background = "#2563EB";
+                        }}
                     >
                         Create Account
                     </button>
 
+                    {/* Login */}
                     <button
                         onClick={() => navigate("/login")}
                         style={{
                             padding: "12px 28px",
-                            backgroundColor: "#1D4ED8",
+                            backgroundColor: "#2563EB",
                             color: "white",
                             border: "none",
                             borderRadius: "10px",
                             fontSize: "16px",
-                            fontWeight: 700,
+                            fontWeight: 600,
                             cursor: "pointer",
-                            boxShadow: "0 8px 20px rgba(29,78,216,0.25)"
+                            minWidth: "170px",
+                            height: "48px",
+                            transition: "all 0.25s ease",
+                            boxShadow:
+                                "0 4px 12px rgba(37, 99, 235, 0.2)",
                         }}
-                        onMouseOver={e => (e.target.style.background = "#1747b9")}
-                        onMouseOut={e => (e.target.style.background = "#1D4ED8")}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.background = "#1D4ED8";
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.background = "#2563EB";
+                        }}
                     >
                         Login
                     </button>
                 </div>
 
+                {/* About + Founder */}
                 <div
                     style={{
-                        marginTop: "8px",
+                        width: "100%",
                         display: "flex",
-                        alignItems: "center",
+                        alignItems: "flex-start",
                         justifyContent: "center",
-                        gap: "14px",
-                        flexWrap: "wrap"
+                        gap: "40px",
+                        flexWrap: "wrap",
+                        marginTop: "8px",
                     }}
                 >
-                    <div style={{ textAlign: "left", minWidth: 260 }}>
-                        <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>About this platform</div>
-                        <div style={{ fontSize: 13, color: "#4b5563", marginTop: 6 }}>
-                            Aahar Setu provides easy donor onboarding, donation scheduling, pickup logistics, and audit-ready donation records to help NGOs and donors work together efficiently.
+
+                    {/* About Platform */}
+                    <div
+                        style={{
+                            textAlign: "left",
+                            width: "360px",
+                            maxWidth: "100%",
+                        }}
+                    >
+                        <div
+                            style={{
+                                fontSize: "14px",
+                                color: "#111827",
+                                fontWeight: 600,
+                                marginBottom: "6px",
+                                textShadow:
+                                    "0 1px 3px rgba(255,255,255,0.9)",
+                            }}
+                        >
+                            About FoodBridge
+                        </div>
+
+                        <div
+                            style={{
+                                fontSize: "13px",
+                                color: "#4B5563",
+                                lineHeight: 1.5,
+                                textShadow:
+                                    "0 1px 3px rgba(255,255,255,0.8)",
+                            }}
+                        >
+                            FoodBridge provides easy donor onboarding,
+                            donation scheduling, pickup logistics, and
+                            donation records to help NGOs and donors work
+                            together efficiently.
                         </div>
                     </div>
 
-                    <div style={{ minWidth: 260 }}>
-                        <div style={{ fontSize: 14, color: "#1a1a1a", fontWeight: 600 }}>Founder</div>
+                    {/* Founder */}
+                    <div
+                        style={{
+                            width: "300px",
+                            maxWidth: "100%",
+                        }}
+                    >
+                        <div
+                            style={{
+                                fontSize: "14px",
+                                color: "#111827",
+                                fontWeight: 600,
+                                textAlign: "left",
+                                marginBottom: "8px",
+                                textShadow:
+                                    "0 1px 3px rgba(255,255,255,0.9)",
+                            }}
+                        >
+                            Founder
+                        </div>
 
-                        {/* Replace [Founder Name] with the real name of the Founder & CEO of K7iT */}
-                        <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 12 }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "12px",
+                            }}
+                        >
                             <img
                                 src="/K7iT.jpeg"
                                 alt="K7iT Logo"
                                 style={{
-                                    width: 48,
-                                    height: 48,
-                                    borderRadius: 8,
+                                    width: "48px",
+                                    height: "48px",
+                                    borderRadius: "8px",
                                     objectFit: "cover",
                                     objectPosition: "center",
                                 }}
                             />
+
                             <div style={{ textAlign: "left" }}>
-                                <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>
+                                <div
+                                    style={{
+                                        fontSize: "15px",
+                                        fontWeight: 700,
+                                        color: "#111827",
+                                        textShadow:
+                                            "0 1px 3px rgba(255,255,255,0.9)",
+                                    }}
+                                >
                                     Kesavulu Arthala
                                 </div>
-                                <div style={{ fontSize: 13, color: "#6b7280" }}>Founder & CEO, K7iT</div>
+
+                                <div
+                                    style={{
+                                        fontSize: "13px",
+                                        color: "#6B7280",
+                                    }}
+                                >
+                                    Founder & CEO, K7iT
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <p style={{ marginTop: 20, color: "#9ca3af", fontSize: 12 }}>
-                    Note: Replace the placeholder founder name with the correct full name and a short bio if desired. If you use a real photo of children for the background, ensure permissions and privacy requirements are met; consider an illustration for safety.
+                {/* Footer Note */}
+                <p
+                    style={{
+                        marginTop: "20px",
+                        color: "#6B7280",
+                        fontSize: "12px",
+                        textAlign: "center",
+                        textShadow:
+                            "0 1px 3px rgba(255,255,255,0.8)",
+                    }}
+                >
+                    Together, we can rescue food, reduce waste, and make a
+                    meaningful difference in our communities.
                 </p>
+
             </div>
         </div>
     );
 }
 
-export default Welcome
+export default Welcome;
