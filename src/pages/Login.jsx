@@ -93,15 +93,11 @@ function Login() {
               padding: "20px",
               boxSizing: "border-box",
 
-              // FoodBridge background image
               backgroundImage:
-                  'linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)), url("/food-rescue.jpeg")',
+                  'linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("/food-rescue.jpeg")',
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-
-              // Keeps the content readable
-              position: "relative",
           }}
       >
       {/* Brand Circle */}
