@@ -65,67 +65,85 @@ function Register() {
     return (
         <div
             style={{
+                width: "100%",
+                height: "100vh",
                 minHeight: "100vh",
+                overflow: "hidden",
+
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                padding: "20px",
+
+                padding: "12px 20px",
                 boxSizing: "border-box",
 
-                /* Same background as Login and Welcome */
                 backgroundImage: `
                     linear-gradient(
-                        rgba(255, 255, 255, 0.35),
-                        rgba(255, 255, 255, 0.35)
+                        rgba(255, 255, 255, 0.30),
+                        rgba(255, 255, 255, 0.30)
                     ),
                     url("/food-rescue.jpeg")
                 `,
+
                 backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat"
+
+                /* Keeps hands and food bowl around center */
+                backgroundPosition: "center center",
+
+                backgroundRepeat: "no-repeat",
+
+                position: "relative"
             }}
         >
 
-            {/* Main Content */}
+            {/* Main Register Content */}
             <div
                 style={{
                     width: "100%",
                     maxWidth: "420px",
+
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
 
-                    /* Transparent like Login */
                     background: "transparent",
 
-                    backdropFilter: "blur(3px)",
-                    WebkitBackdropFilter: "blur(3px)",
+                    backdropFilter: "blur(2px)",
+                    WebkitBackdropFilter: "blur(2px)",
 
                     padding: "0",
-                    borderRadius: "16px"
+                    margin: "0",
+
+                    boxSizing: "border-box"
                 }}
             >
 
                 {/* Food Donation Image */}
                 <div
                     style={{
-                        width: "100px",
-                        height: "100px",
-                        marginBottom: "24px",
+                        width: "76px",
+                        height: "76px",
+
+                        marginBottom: "10px",
+
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "center"
+                        alignItems: "center",
+
+                        flexShrink: 0
                     }}
                 >
                     <img
                         src="/food-donation.jpeg"
                         alt="Food donation"
                         style={{
-                            width: "90px",
-                            height: "90px",
+                            width: "76px",
+                            height: "76px",
+
                             objectFit: "cover",
                             borderRadius: "50%",
+
                             display: "block"
                         }}
                     />
@@ -134,11 +152,15 @@ function Register() {
                 {/* Heading */}
                 <h1
                     style={{
-                        fontSize: "32px",
+                        fontSize: "30px",
                         fontWeight: "700",
-                        margin: "0 0 8px 0",
+
+                        margin: "0 0 6px 0",
+
                         color: "#111827",
+
                         textAlign: "center",
+
                         textShadow:
                             "0 2px 5px rgba(255,255,255,0.9)"
                     }}
@@ -149,13 +171,20 @@ function Register() {
                 {/* Description */}
                 <p
                     style={{
-                        fontSize: "15px",
+                        fontSize: "14px",
+
                         color: "#172033",
-                        marginBottom: "40px",
+
+                        margin: "0 0 18px 0",
+
                         fontWeight: 500,
+
                         textAlign: "center",
+
                         maxWidth: "400px",
-                        lineHeight: 1.6,
+
+                        lineHeight: 1.45,
+
                         textShadow:
                             "0 1px 4px rgba(255,255,255,0.9)"
                     }}
@@ -170,24 +199,35 @@ function Register() {
                     style={{
                         width: "100%",
                         maxWidth: "420px",
+
                         display: "flex",
                         flexDirection: "column",
-                        gap: "20px"
+
+                        boxSizing: "border-box"
                     }}
                 >
 
                     <form onSubmit={handleSubmit}>
 
                         {/* Full Name */}
-                        <div style={{ marginBottom: "20px" }}>
-
+                        <div
+                            style={{
+                                marginBottom: "11px"
+                            }}
+                        >
                             <label
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "13px",
                                     fontWeight: "600",
+
                                     color: "#111827",
+
                                     display: "block",
-                                    marginBottom: "8px"
+
+                                    marginBottom: "5px",
+
+                                    textShadow:
+                                        "0 1px 3px rgba(255,255,255,0.9)"
                                 }}
                             >
                                 Full Name
@@ -207,25 +247,42 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    padding: "12px 14px",
-                                    borderRadius: "10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "rgba(255,255,255,0.95)"
+                                    width: "100%",
+                                    height: "42px",
+
+                                    padding: "9px 12px",
+
+                                    borderRadius: "9px",
+
+                                    fontSize: "14px",
+
+                                    backgroundColor:
+                                        "rgba(255,255,255,0.94)",
+
+                                    boxSizing: "border-box"
                                 }}
                             />
-
                         </div>
 
                         {/* Email */}
-                        <div style={{ marginBottom: "20px" }}>
-
+                        <div
+                            style={{
+                                marginBottom: "11px"
+                            }}
+                        >
                             <label
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "13px",
                                     fontWeight: "600",
+
                                     color: "#111827",
+
                                     display: "block",
-                                    marginBottom: "8px"
+
+                                    marginBottom: "5px",
+
+                                    textShadow:
+                                        "0 1px 3px rgba(255,255,255,0.9)"
                                 }}
                             >
                                 Email Address
@@ -245,25 +302,42 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    padding: "12px 14px",
-                                    borderRadius: "10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "rgba(255,255,255,0.95)"
+                                    width: "100%",
+                                    height: "42px",
+
+                                    padding: "9px 12px",
+
+                                    borderRadius: "9px",
+
+                                    fontSize: "14px",
+
+                                    backgroundColor:
+                                        "rgba(255,255,255,0.94)",
+
+                                    boxSizing: "border-box"
                                 }}
                             />
-
                         </div>
 
                         {/* Mobile Number */}
-                        <div style={{ marginBottom: "20px" }}>
-
+                        <div
+                            style={{
+                                marginBottom: "11px"
+                            }}
+                        >
                             <label
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "13px",
                                     fontWeight: "600",
+
                                     color: "#111827",
+
                                     display: "block",
-                                    marginBottom: "8px"
+
+                                    marginBottom: "5px",
+
+                                    textShadow:
+                                        "0 1px 3px rgba(255,255,255,0.9)"
                                 }}
                             >
                                 Mobile Number
@@ -283,25 +357,42 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    padding: "12px 14px",
-                                    borderRadius: "10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "rgba(255,255,255,0.95)"
+                                    width: "100%",
+                                    height: "42px",
+
+                                    padding: "9px 12px",
+
+                                    borderRadius: "9px",
+
+                                    fontSize: "14px",
+
+                                    backgroundColor:
+                                        "rgba(255,255,255,0.94)",
+
+                                    boxSizing: "border-box"
                                 }}
                             />
-
                         </div>
 
                         {/* Password */}
-                        <div style={{ marginBottom: "28px" }}>
-
+                        <div
+                            style={{
+                                marginBottom: "15px"
+                            }}
+                        >
                             <label
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "13px",
                                     fontWeight: "600",
+
                                     color: "#111827",
+
                                     display: "block",
-                                    marginBottom: "8px"
+
+                                    marginBottom: "5px",
+
+                                    textShadow:
+                                        "0 1px 3px rgba(255,255,255,0.9)"
                                 }}
                             >
                                 Password
@@ -321,32 +412,47 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    padding: "12px 14px",
-                                    borderRadius: "10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "rgba(255,255,255,0.95)"
+                                    width: "100%",
+                                    height: "42px",
+
+                                    padding: "9px 12px",
+
+                                    borderRadius: "9px",
+
+                                    fontSize: "14px",
+
+                                    backgroundColor:
+                                        "rgba(255,255,255,0.94)",
+
+                                    boxSizing: "border-box"
                                 }}
                             />
-
                         </div>
 
-                        {/* Create Account Button */}
+                        {/* Create Account */}
                         <button
                             className="btn btn-primary"
                             type="submit"
                             style={{
                                 width: "100%",
-                                height: "48px",
-                                fontSize: "16px",
+                                height: "44px",
+
+                                fontSize: "15px",
                                 fontWeight: "600",
-                                borderRadius: "10px",
+
+                                borderRadius: "9px",
                                 border: "none",
+
                                 backgroundColor: "#2563EB",
                                 color: "white",
+
                                 cursor: "pointer",
+
                                 boxShadow:
-                                    "0 4px 12px rgba(37, 99, 235, 0.2)",
-                                transition: "all 0.25s ease"
+                                    "0 4px 12px rgba(37, 99, 235, 0.25)",
+
+                                transition:
+                                    "all 0.25s ease"
                             }}
                             onMouseOver={(e) =>
                                 (e.target.style.background = "#1D4ED8")
@@ -364,9 +470,13 @@ function Register() {
                     <p
                         style={{
                             textAlign: "center",
-                            fontSize: "14px",
-                            color: "#4B5563",
-                            marginTop: "8px",
+
+                            fontSize: "13px",
+
+                            color: "#374151",
+
+                            margin: "10px 0 0 0",
+
                             textShadow:
                                 "0 1px 3px rgba(255,255,255,0.9)"
                         }}
@@ -377,13 +487,19 @@ function Register() {
                             to="/login"
                             style={{
                                 color: "#2563EB",
+
                                 fontWeight: "600",
+
                                 textDecoration: "none",
-                                transition: "color 0.25s ease"
+
+                                transition:
+                                    "color 0.25s ease"
                             }}
+
                             onMouseOver={(e) =>
                                 (e.target.style.color = "#1D4ED8")
                             }
+
                             onMouseOut={(e) =>
                                 (e.target.style.color = "#2563EB")
                             }
