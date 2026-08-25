@@ -20,14 +20,14 @@ function Register() {
 
             alert("Registration Successful");
 
-            navigate("/login");
-
             setFormData({
                 fullName: "",
                 email: "",
                 mobileNumber: "",
                 password: ""
             });
+
+            navigate("/login");
 
         } catch (error) {
             console.error(error);
@@ -67,11 +67,13 @@ function Register() {
             style={{
                 minHeight: "100vh",
                 display: "flex",
-                alignItems: "center",
+                flexDirection: "column",
                 justifyContent: "center",
-                padding: "40px 20px",
+                alignItems: "center",
+                padding: "20px",
                 boxSizing: "border-box",
 
+                /* Same background as Login and Welcome */
                 backgroundImage: `
                     linear-gradient(
                         rgba(255, 255, 255, 0.35),
@@ -79,56 +81,41 @@ function Register() {
                     ),
                     url("/food-rescue.jpeg")
                 `,
-
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-
-                textAlign: "center"
+                backgroundRepeat: "no-repeat"
             }}
         >
 
             {/* Main Content */}
             <div
                 style={{
-                    maxWidth: "920px",
                     width: "100%",
-                    padding: "35px 40px",
+                    maxWidth: "420px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
 
-                    borderRadius: "16px",
-
-                    background: "rgba(255, 255, 255, 0.20)",
+                    /* Transparent like Login */
+                    background: "transparent",
 
                     backdropFilter: "blur(3px)",
                     WebkitBackdropFilter: "blur(3px)",
 
-                    border: "1px solid rgba(255, 255, 255, 0.40)",
-
-                    boxShadow: "0 8px 40px rgba(0, 0, 0, 0.12)",
-
-                    color: "#111827"
+                    padding: "0",
+                    borderRadius: "16px"
                 }}
             >
 
                 {/* Food Donation Image */}
                 <div
                     style={{
-                        width: "90px",
-                        height: "90px",
-                        margin: "0 auto 20px",
-
-                        borderRadius: "50%",
-                        overflow: "hidden",
-
-                        position: "relative",
-
-                        background: "transparent",
-
+                        width: "100px",
+                        height: "100px",
+                        marginBottom: "24px",
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "center",
-
-                        boxShadow: "0 6px 18px rgba(0, 0, 0, 0.18)"
+                        alignItems: "center"
                     }}
                 >
                     <img
@@ -144,14 +131,14 @@ function Register() {
                     />
                 </div>
 
-                {/* Title */}
+                {/* Heading */}
                 <h1
                     style={{
-                        fontSize: "36px",
-                        margin: "0 0 10px",
-                        fontWeight: 800,
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        margin: "0 0 8px 0",
                         color: "#111827",
-
+                        textAlign: "center",
                         textShadow:
                             "0 2px 5px rgba(255,255,255,0.9)"
                     }}
@@ -162,56 +149,45 @@ function Register() {
                 {/* Description */}
                 <p
                     style={{
-                        maxWidth: "650px",
-                        margin: "0 auto 28px",
-
-                        lineHeight: 1.6,
-
+                        fontSize: "15px",
                         color: "#172033",
-                        fontSize: "16px",
+                        marginBottom: "40px",
                         fontWeight: 500,
-
+                        textAlign: "center",
+                        maxWidth: "400px",
+                        lineHeight: 1.6,
                         textShadow:
                             "0 1px 4px rgba(255,255,255,0.9)"
                     }}
                 >
-                    Create an account with Aahar Setu and become part of a
-                    community working together to reduce food waste and
-                    connect surplus food with people and communities in need.
+                    Create an account and join our community in reducing
+                    food waste and connecting surplus food with people
+                    and communities in need.
                 </p>
 
-                {/* Registration Form */}
+                {/* Form */}
                 <div
                     style={{
                         width: "100%",
                         maxWidth: "420px",
-                        margin: "0 auto",
-
                         display: "flex",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        gap: "20px"
                     }}
                 >
 
                     <form onSubmit={handleSubmit}>
 
                         {/* Full Name */}
-                        <div
-                            style={{
-                                marginBottom: "18px",
-                                textAlign: "left"
-                            }}
-                        >
+                        <div style={{ marginBottom: "20px" }}>
+
                             <label
                                 style={{
                                     fontSize: "14px",
-                                    fontWeight: 600,
+                                    fontWeight: "600",
                                     color: "#111827",
-
                                     display: "block",
-                                    marginBottom: "7px",
-
-                                    textShadow:
-                                        "0 1px 3px rgba(255,255,255,0.9)"
+                                    marginBottom: "8px"
                                 }}
                             >
                                 Full Name
@@ -231,39 +207,25 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    width: "100%",
-                                    boxSizing: "border-box",
                                     padding: "12px 14px",
                                     borderRadius: "10px",
                                     fontSize: "15px",
-
-                                    backgroundColor:
-                                        "rgba(255,255,255,0.88)",
-
-                                    border:
-                                        "1px solid rgba(148,163,184,0.5)"
+                                    backgroundColor: "rgba(255,255,255,0.95)"
                                 }}
                             />
+
                         </div>
 
                         {/* Email */}
-                        <div
-                            style={{
-                                marginBottom: "18px",
-                                textAlign: "left"
-                            }}
-                        >
+                        <div style={{ marginBottom: "20px" }}>
+
                             <label
                                 style={{
                                     fontSize: "14px",
-                                    fontWeight: 600,
+                                    fontWeight: "600",
                                     color: "#111827",
-
                                     display: "block",
-                                    marginBottom: "7px",
-
-                                    textShadow:
-                                        "0 1px 3px rgba(255,255,255,0.9)"
+                                    marginBottom: "8px"
                                 }}
                             >
                                 Email Address
@@ -273,7 +235,7 @@ function Register() {
                                 type="email"
                                 autoComplete="off"
                                 className="form-control"
-                                placeholder="Enter your email address"
+                                placeholder="you@example.com"
                                 value={formData.email}
                                 onChange={(e) =>
                                     setFormData({
@@ -283,39 +245,25 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    width: "100%",
-                                    boxSizing: "border-box",
                                     padding: "12px 14px",
                                     borderRadius: "10px",
                                     fontSize: "15px",
-
-                                    backgroundColor:
-                                        "rgba(255,255,255,0.88)",
-
-                                    border:
-                                        "1px solid rgba(148,163,184,0.5)"
+                                    backgroundColor: "rgba(255,255,255,0.95)"
                                 }}
                             />
+
                         </div>
 
                         {/* Mobile Number */}
-                        <div
-                            style={{
-                                marginBottom: "18px",
-                                textAlign: "left"
-                            }}
-                        >
+                        <div style={{ marginBottom: "20px" }}>
+
                             <label
                                 style={{
                                     fontSize: "14px",
-                                    fontWeight: 600,
+                                    fontWeight: "600",
                                     color: "#111827",
-
                                     display: "block",
-                                    marginBottom: "7px",
-
-                                    textShadow:
-                                        "0 1px 3px rgba(255,255,255,0.9)"
+                                    marginBottom: "8px"
                                 }}
                             >
                                 Mobile Number
@@ -335,39 +283,25 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    width: "100%",
-                                    boxSizing: "border-box",
                                     padding: "12px 14px",
                                     borderRadius: "10px",
                                     fontSize: "15px",
-
-                                    backgroundColor:
-                                        "rgba(255,255,255,0.88)",
-
-                                    border:
-                                        "1px solid rgba(148,163,184,0.5)"
+                                    backgroundColor: "rgba(255,255,255,0.95)"
                                 }}
                             />
+
                         </div>
 
                         {/* Password */}
-                        <div
-                            style={{
-                                marginBottom: "24px",
-                                textAlign: "left"
-                            }}
-                        >
+                        <div style={{ marginBottom: "28px" }}>
+
                             <label
                                 style={{
                                     fontSize: "14px",
-                                    fontWeight: 600,
+                                    fontWeight: "600",
                                     color: "#111827",
-
                                     display: "block",
-                                    marginBottom: "7px",
-
-                                    textShadow:
-                                        "0 1px 3px rgba(255,255,255,0.9)"
+                                    marginBottom: "8px"
                                 }}
                             >
                                 Password
@@ -377,7 +311,7 @@ function Register() {
                                 type="password"
                                 autoComplete="new-password"
                                 className="form-control"
-                                placeholder="Create a password"
+                                placeholder="••••••••"
                                 value={formData.password}
                                 onChange={(e) =>
                                     setFormData({
@@ -387,49 +321,38 @@ function Register() {
                                 }
                                 required
                                 style={{
-                                    width: "100%",
-                                    boxSizing: "border-box",
                                     padding: "12px 14px",
                                     borderRadius: "10px",
                                     fontSize: "15px",
-
-                                    backgroundColor:
-                                        "rgba(255,255,255,0.88)",
-
-                                    border:
-                                        "1px solid rgba(148,163,184,0.5)"
+                                    backgroundColor: "rgba(255,255,255,0.95)"
                                 }}
                             />
+
                         </div>
 
                         {/* Create Account Button */}
                         <button
+                            className="btn btn-primary"
                             type="submit"
                             style={{
                                 width: "100%",
                                 height: "48px",
-
-                                backgroundColor: "#1D4ED8",
-                                color: "white",
-
-                                border: "none",
-                                borderRadius: "10px",
-
                                 fontSize: "16px",
-                                fontWeight: 700,
-
+                                fontWeight: "600",
+                                borderRadius: "10px",
+                                border: "none",
+                                backgroundColor: "#2563EB",
+                                color: "white",
                                 cursor: "pointer",
-
                                 boxShadow:
-                                    "0 8px 20px rgba(29,78,216,0.25)"
+                                    "0 4px 12px rgba(37, 99, 235, 0.2)",
+                                transition: "all 0.25s ease"
                             }}
                             onMouseOver={(e) =>
-                                (e.currentTarget.style.backgroundColor =
-                                    "#1747B9")
+                                (e.target.style.background = "#1D4ED8")
                             }
                             onMouseOut={(e) =>
-                                (e.currentTarget.style.backgroundColor =
-                                    "#1D4ED8")
+                                (e.target.style.background = "#2563EB")
                             }
                         >
                             Create Account
@@ -442,9 +365,8 @@ function Register() {
                         style={{
                             textAlign: "center",
                             fontSize: "14px",
-                            color: "#374151",
-                            marginTop: "20px",
-
+                            color: "#4B5563",
+                            marginTop: "8px",
                             textShadow:
                                 "0 1px 3px rgba(255,255,255,0.9)"
                         }}
@@ -454,10 +376,17 @@ function Register() {
                         <Link
                             to="/login"
                             style={{
-                                color: "#1D4ED8",
-                                fontWeight: 700,
-                                textDecoration: "none"
+                                color: "#2563EB",
+                                fontWeight: "600",
+                                textDecoration: "none",
+                                transition: "color 0.25s ease"
                             }}
+                            onMouseOver={(e) =>
+                                (e.target.style.color = "#1D4ED8")
+                            }
+                            onMouseOut={(e) =>
+                                (e.target.style.color = "#2563EB")
+                            }
                         >
                             Sign In
                         </Link>
