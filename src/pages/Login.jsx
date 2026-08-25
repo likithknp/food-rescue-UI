@@ -83,18 +83,27 @@ function Login() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F8FAFC",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
+      <div
+          style={{
+              minHeight: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "20px",
+              boxSizing: "border-box",
+
+              // FoodBridge background image
+              backgroundImage:
+                  'linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)), url("/food-rescue.jpeg")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+
+              // Keeps the content readable
+              position: "relative",
+          }}
+      >
       {/* Brand Circle */}
         <div
             style={{
